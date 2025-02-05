@@ -1,0 +1,32 @@
+{
+  "name": "@pahell/coruscant-client",
+  "version": "1.0.1",
+  "license": "GPLV3",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:PaHell/coruscant-monorepo.git",
+    "directory": "src-client"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
+    "esbuild": "^0.24.2",
+    "rollup": "^4.21.2",
+    "rollup-plugin-dts": "^6.1.1",
+    "tslib": "^2.7.0",
+    "typescript": "^5.5.4"
+  }
+}
