@@ -1,3 +1,32 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer root {
+	:root {
+		--primary: 33 33 33;
+		--secondary: 97 97 97;
+		--accent: 156 39 176;
+		--accent-foreground: 225 190 231;
+		--background: 250 250 250;
+		--foreground: 255 255 255;
+		--border: 224 224 224;
+		--danger: 244 67 54;
+		--danger-foreground: 255 205 210;
+		--warning: 255 235 59;
+		--warning-foreground: 255 245 157;
+		.dark {
+			--primary: 255 255 255;
+			--secondary: 189 189 189;
+			--accent: 171 71 188;
+			--accent-foreground: 106 27 154;
+			--background: 0 0 0;
+			--foreground: 33 33 33;
+			--border: 189 189 189;
+			--danger: 239 83 80;
+			--danger-foreground: 198 40 40;
+			--warning: 255 235 59;
+			--warning-foreground: 249 168 37;
+		}
+	}
+}

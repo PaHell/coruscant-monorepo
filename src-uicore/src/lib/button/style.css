@@ -1,3 +1,25 @@
 .button {
-	@apply rounded bg-blue-500 px-4 py-2 font-bold text-white;
+	@apply rounded border-2 px-4 py-2 font-bold;
+
+	&.button-variant-default {
+		@apply bg-foreground text-primary;
+	}
+	&.button-variant-primary {
+		@apply border-black/10 bg-accent text-white shadow;
+	}
+	&.button-variant-danger {
+		@apply border-black/10 bg-danger text-white shadow;
+	}
+	&.button-variant-warning {
+		@apply border-black/10 bg-warning text-black shadow;
+	}
+	&.button-variant-transparent {
+		@apply border-transparent bg-transparent text-primary;
+	}
+	&.button-variant-subtle {
+		@apply border-transparent bg-transparent text-secondary;
+	}
+	&.button-variant-outline {
+		@apply border-primary bg-transparent text-primary;
+	}
 }
