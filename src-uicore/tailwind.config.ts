@@ -9,6 +9,9 @@ export default {
 	safelist: ["dark"],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['Inter var', 'Inter', 'sans-serif'],
+			},
 			colors: {
 				primary: "rgba(var(--primary) / <alpha-value>)",
 				secondary: "rgba(var(--secondary) / <alpha-value>)",

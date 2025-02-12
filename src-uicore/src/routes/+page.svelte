@@ -1,8 +1,9 @@
 <script lang="ts">
 	import Button from '$lib/button/Button.svelte';
+	import Heading from '$src/lib/text/Heading.svelte';
 </script>
 
-<h1>Welcome to your library project</h1>
+<Heading level={1}>Welcome to your library project</Heading>
 <p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
 

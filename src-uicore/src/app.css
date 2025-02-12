@@ -1,8 +1,11 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import url('https://rsms.me/inter/inter.css');
+@import 'remixicon/fonts/remixicon.css';
 
-@layer root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
 	:root {
 		--primary: 33 33 33;
 		--secondary: 97 97 97;
@@ -15,18 +18,27 @@
 		--danger-foreground: 255 205 210;
 		--warning: 255 235 59;
 		--warning-foreground: 255 245 157;
-		.dark {
-			--primary: 255 255 255;
-			--secondary: 189 189 189;
-			--accent: 171 71 188;
-			--accent-foreground: 106 27 154;
-			--background: 0 0 0;
-			--foreground: 33 33 33;
-			--border: 189 189 189;
-			--danger: 239 83 80;
-			--danger-foreground: 198 40 40;
-			--warning: 255 235 59;
-			--warning-foreground: 249 168 37;
-		}
+	}
+	.dark {
+		--primary: 255 255 255;
+		--secondary: 189 189 189;
+		--accent: 171 71 188;
+		--accent-foreground: 106 27 154;
+		--background: 0 0 0;
+		--foreground: 33 33 33;
+		--border: 189 189 189;
+		--danger: 239 83 80;
+		--danger-foreground: 198 40 40;
+		--warning: 255 235 59;
+		--warning-foreground: 249 168 37;
+	}
+	html,
+	body,
+	body > #content {
+		@apply h-screen w-full;
+	}
+	body,
+	.docs-story {
+		@apply bg-background font-sans text-base text-primary;
 	}
 }

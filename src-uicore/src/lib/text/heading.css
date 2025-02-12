@@ -1,0 +1,21 @@
+.text.heading {
+	@apply text-primary;
+	&h1 {
+		@apply text-4xl !important;
+	}
+	&h2 {
+		@apply text-3xl font-bold !important;
+	}
+	&h3 {
+		@apply text-2xl !important;
+	}
+	&h4 {
+		@apply text-xl font-bold !important;
+	}
+	&h5 {
+		@apply text-lg !important;
+	}
+	&h6 {
+		@apply text-base font-bold uppercase tracking-wide !important;
+	}
+}
