@@ -1,0 +1,9 @@
+.text {
+	@apply text-base;
+	&.small {
+		@apply text-xs;
+	}
+	&.secondary {
+		@apply text-secondary;
+	}
+}

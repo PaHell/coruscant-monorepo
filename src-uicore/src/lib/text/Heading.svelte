@@ -8,10 +8,10 @@
 	}: {
 		level?: 1 | 2 | 3 | 4 | 5 | 6;
 		class?: string;
-		children?: Snippet<[]>;
+		children: Snippet<[]>;
 	} = $props();
 </script>
 
 <svelte:element this={`h${level}`} class="text heading {classes}">
-	{@render children?.()}
+	{@render children()}
 </svelte:element>

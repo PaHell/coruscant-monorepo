@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Heading from '$lib/text/Heading.svelte';
-	import '../app.css';
+	import Text from '$src/lib/text/Text.svelte';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -32,7 +32,7 @@
 	<Heading level={4}>Heading 4</Heading>
 	<Heading level={5}>Heading 5</Heading>
 	<Heading level={6}>Heading 6</Heading>
-	<p class="text">Normal text</p>
-	<p class="text text-secondary">Secondary text</p>
-	<p class="text small">Small text</p>
+	<Text>Normal text</Text>
+	<Text secondary>Secondary text</Text>
+	<Text small>Small text</Text>
 </Story>

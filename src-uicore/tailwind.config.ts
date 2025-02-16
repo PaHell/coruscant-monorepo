@@ -21,7 +21,16 @@ export default {
 				},
 				background: "rgba(var(--background) / <alpha-value>)",
 				foreground: "rgba(var(--foreground) / <alpha-value>)",
-				border: "rgba(var(--border) / <alpha-value>)",
+				interactive: {
+					DEFAULT: "rgba(var(--interactive) / <alpha-value>)",
+					hover: "rgba(var(--interactive-hover) / <alpha-value>)",
+					active: "rgba(var(--interactive-active) / <alpha-value>)"
+				},
+				border: {
+					DEFAULT: "rgba(var(--border) / <alpha-value>)",
+					hover: "rgba(var(--border-hover) / <alpha-value>)",
+					active: "rgba(var(--border-active) / <alpha-value>)"
+				},
 				danger: {
 					DEFAULT: "rgba(var(--danger) / <alpha-value>)",
 					foreground: "rgba(var(--danger-foreground) / <alpha-value>)"

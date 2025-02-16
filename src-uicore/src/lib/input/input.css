@@ -1,0 +1,54 @@
+.input {
+	@apply bg-interactive flex w-full items-center border-b-2 border-border;
+
+	& > .icon {
+		@apply w-10;
+	}
+
+	& > div {
+		@apply flex flex-1 flex-col;
+		& > label {
+			@apply mb-[-1.125rem] mt-0.5 h-4 px-2 !leading-[1.1rem];
+		}
+		& > input {
+			@apply h-12;
+			height: calc(3rem - 2px);
+		}
+		& > textarea {
+			@apply h-20 min-h-12;
+		}
+		& > input,
+		& > textarea {
+			@apply border-0 !bg-transparent !px-2 !pt-2.5 text-base font-normal !leading-none text-primary !ring-0 placeholder:font-light placeholder:text-secondary;
+		}
+		& > label + input,
+		& > label + textarea {
+			@apply !pt-5;
+		}
+	}
+
+	& > .icon + div {
+		& > label,
+		& > input,
+		& > textarea {
+			@apply !ps-0;
+		}
+	}
+
+	&:hover {
+		@apply border-border-hover bg-interactive-hover;
+	}
+
+	&:focus-within {
+		@apply border-border-active bg-accent-foreground;
+		& > .icon {
+			@apply text-accent;
+		}
+		& > div {
+			& > input,
+			& > textarea {
+				@apply placeholder:text-accent/50;
+			}
+		}
+	}
+}

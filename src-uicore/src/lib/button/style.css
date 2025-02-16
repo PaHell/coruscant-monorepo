@@ -1,25 +1,64 @@
 .button {
-	@apply rounded border-2 px-4 py-2 font-bold;
+	@apply box-border flex items-center space-x-1 rounded border p-3 text-sm font-bold leading-6;
+	padding: calc(0.75rem - 1px);
 
+	& > .icon {
+		@apply w-6;
+	}
+	& > *:not(.icon) {
+		&:first-child {
+			@apply ms-1;
+		}
+		&:last-child {
+			@apply me-1;
+		}
+	}
+	&.button-variant-transparent,
+	&.button-variant-subtle {
+		&:hover {
+			@apply bg-interactive-hover;
+		}
+		&:active {
+			@apply bg-interactive-active;
+		}
+	}
+	&.button-variant-primary,
+	&.button-variant-danger,
+	&.button-variant-warning {
+		@apply shadow;
+		&:hover {
+			@apply shadow-lg;
+		}
+		&:active {
+			@apply shadow-md;
+		}
+	}
 	&.button-variant-default {
-		@apply bg-foreground text-primary;
+		@apply border-black/10 bg-foreground text-primary;
+		&:hover {
+			@apply bg-interactive-hover border-black/10;
+		}
+		&:active {
+			@apply bg-interactive-active border-black/10;
+		}
 	}
 	&.button-variant-primary {
-		@apply border-black/10 bg-accent text-white shadow;
+		@apply border-white/15 bg-accent text-white;
 	}
 	&.button-variant-danger {
-		@apply border-black/10 bg-danger text-white shadow;
+		@apply border-white/15 bg-danger text-white;
 	}
 	&.button-variant-warning {
-		@apply border-black/10 bg-warning text-black shadow;
+		@apply border-white/15 bg-warning text-black;
 	}
 	&.button-variant-transparent {
 		@apply border-transparent bg-transparent text-primary;
 	}
 	&.button-variant-subtle {
-		@apply border-transparent bg-transparent text-secondary;
+		@apply bg-interactive border-transparent;
 	}
 	&.button-variant-outline {
-		@apply border-primary bg-transparent text-primary;
+		@apply border-2 border-primary bg-transparent text-primary;
+		padding: calc(0.75rem - 2px);
 	}
 }
