@@ -1,3 +1,6 @@
 .popover {
-	@apply rounded-lg border border-border bg-foreground p-4 shadow-lg;
+	@apply isolate;
+	& > menu {
+		@apply absolute bottom-0 left-0 rounded-lg border border-border bg-foreground p-4 shadow-lg;
+	}
 }
