@@ -1,0 +1,6 @@
+.select-button {
+	@apply min-w-72 !important;
+}
+.select-menu {
+	@apply overflow-auto;
+}

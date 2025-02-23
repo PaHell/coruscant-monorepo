@@ -1,0 +1,5 @@
+.floating {
+	& > menu {
+		@apply absolute left-0 top-0 w-[max-content] overflow-hidden border border-border bg-foreground p-4 shadow-lg;
+	}
+}

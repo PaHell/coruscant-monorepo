@@ -9,7 +9,7 @@
 		href,
 		label,
 		hideLabel = false,
-		variant = 'default',
+		variant = 'primary',
 		size = 'default',
 		active = false,
 		class: classes,

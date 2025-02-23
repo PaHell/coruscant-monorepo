@@ -1,13 +1,11 @@
 import type { Snippet } from "svelte";
-import _Button from "./Button.svelte";
-
-export const Button = _Button;
+export { default as Button } from "./Button.svelte";
 
 export interface ButtonProperties {
       icon?: string;
       label: string;
       hideLabel?: boolean;
-      variant?: 'default' | 'primary' | 'outline' | 'subtle' | 'transparent' | 'warning' | 'danger';
+      variant?: 'primary' | 'secondary' | 'tertiary' | 'integrated' | 'form' | 'danger' | 'warning' | 'link';
       size?: 'default' | 'large';
       active?: boolean;
       class?: string;

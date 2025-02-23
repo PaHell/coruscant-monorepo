@@ -14,10 +14,10 @@
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Default" args={{ variant: 'default', label: 'Button' }} />
+<Story name="Default" args={{ variant: 'primary', label: 'Button' }} />
 <Story name="Variants" args={{}}>
-	<div class="grid grid-cols-3 justify-start gap-4">
-		{#each ['default', 'primary', 'outline', 'subtle', 'transparent', 'warning', 'danger'] as variant}
+	<div class="grid grid-cols-[auto_auto_auto] justify-start gap-4">
+		{#each ['primary', 'secondary', 'tertiary', 'integrated', 'form', 'link', 'warning', 'danger'] as variant}
 			<div>
 				<Button {variant} label="Button" />
 			</div>

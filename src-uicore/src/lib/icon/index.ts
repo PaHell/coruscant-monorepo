@@ -1,9 +1,9 @@
-import _Icon from './Icon.svelte';
+export { default as Icon } from './Icon.svelte';
 
 export const icons = {
       controls: {
-            add: 'add-line'
+            add: 'add-line',
+            close: 'close-line',
+            dropdown: 'arrow-down-s-line'
       }
 };
-
-export const Icon = _Icon;

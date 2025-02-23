@@ -1,5 +1,5 @@
 .input {
-	@apply bg-interactive flex w-full items-center border-b-2 border-border;
+	@apply flex w-full items-center border-b border-black bg-interactive;
 
 	& > .icon {
 		@apply w-10;
@@ -36,11 +36,11 @@
 	}
 
 	&:hover {
-		@apply border-border-hover bg-interactive-hover;
+		@apply bg-interactive-hover;
 	}
 
 	&:focus-within {
-		@apply border-border-active bg-accent-foreground;
+		@apply border-accent bg-accent-foreground;
 		& > .icon {
 			@apply text-accent;
 		}

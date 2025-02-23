@@ -1,11 +1,12 @@
 .button {
-	@apply box-border flex items-center space-x-1 rounded border p-3 text-sm font-bold leading-6;
+	@apply box-border flex items-center space-x-1 overflow-hidden border border-transparent p-3 text-sm font-bold leading-6;
 	padding: calc(0.75rem - 1px);
 
 	& > .icon {
 		@apply w-6;
 	}
 	& > *:not(.icon) {
+		@apply truncate;
 		&:first-child {
 			@apply ms-1;
 		}
@@ -13,8 +14,38 @@
 			@apply me-1;
 		}
 	}
-	&.button-variant-transparent,
-	&.button-variant-subtle {
+	&.button-variant-secondary,
+	&.button-variant-tertiary {
+		@apply text-accent;
+		&:hover {
+			@apply bg-accent/10;
+		}
+		&:active {
+			@apply bg-accent/20;
+		}
+	}
+	&.button-variant-secondary {
+		@apply border-accent;
+	}
+	&.button-variant-tertiary {
+		@apply text-accent;
+		&:hover {
+			@apply bg-accent/10;
+		}
+		&:active {
+			@apply bg-accent/20;
+		}
+	}
+	&.button-variant-primary {
+		@apply bg-accent text-white;
+	}
+	&.button-variant-warning {
+		@apply bg-warning text-black;
+	}
+	&.button-variant-danger {
+		@apply bg-danger text-white;
+	}
+	&.button-variant-integrated {
 		&:hover {
 			@apply bg-interactive-hover;
 		}
@@ -22,43 +53,16 @@
 			@apply bg-interactive-active;
 		}
 	}
-	&.button-variant-primary,
-	&.button-variant-danger,
-	&.button-variant-warning {
-		@apply shadow;
+	&.button-variant-form {
+		@apply border-x-0 border-b-black bg-interactive;
 		&:hover {
-			@apply shadow-lg;
+			@apply bg-interactive-hover;
 		}
 		&:active {
-			@apply shadow-md;
+			@apply bg-interactive-active;
 		}
 	}
-	&.button-variant-default {
-		@apply border-black/10 bg-foreground text-primary;
-		&:hover {
-			@apply bg-interactive-hover border-black/10;
-		}
-		&:active {
-			@apply bg-interactive-active border-black/10;
-		}
-	}
-	&.button-variant-primary {
-		@apply border-white/15 bg-accent text-white;
-	}
-	&.button-variant-danger {
-		@apply border-white/15 bg-danger text-white;
-	}
-	&.button-variant-warning {
-		@apply border-white/15 bg-warning text-black;
-	}
-	&.button-variant-transparent {
-		@apply border-transparent bg-transparent text-primary;
-	}
-	&.button-variant-subtle {
-		@apply bg-interactive border-transparent;
-	}
-	&.button-variant-outline {
-		@apply border-2 border-primary bg-transparent text-primary;
-		padding: calc(0.75rem - 2px);
+	&.button-variant-link {
+		@apply text-accent;
 	}
 }

@@ -1,8 +1,5 @@
-import _Navigation from "./Navigation.svelte";
-import _TabNavigation from "./TabNavigation.svelte";
-
-export const Navigation = _Navigation;
-export const TabNavigation = _TabNavigation;
+export { default as Navigation } from "./Navigation.svelte";
+export { default as TabNavigation } from "./TabNavigation.svelte";
 
 export type NavigationProperties<T> = {
       items: T[];
