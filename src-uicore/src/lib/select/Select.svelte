@@ -39,7 +39,7 @@
 	}
 </script>
 
-<Floating placement="bottom-start" strategy="fixed" class="!p-0">
+<Floating placement="bottom-start" strategy="fixed" class="select-menu">
 	{#snippet trigger({ toggle })}
 		<Button
 			variant="form"
@@ -56,24 +56,22 @@
 		</Button>
 	{/snippet}
 	{#snippet menu()}
-		<div class="select-menu">
-			{#if allowNone}
-				<Button
-					variant="integrated"
-					label={placeholder}
-					onclick={() => setValue()}
-					class="w-full !rounded-none"
-				/>
-			{/if}
-			{#each items as item, i (i)}
-				<Button
-					variant="integrated"
-					label={getDisplayValue(item)}
-					onclick={() => setValue(item)}
-					class="w-full !rounded-none"
-					active={(value && getKey(value)) == getKey(item)}
-				/>
-			{/each}
-		</div>
+		{#if allowNone}
+			<Button
+				variant="integrated"
+				label={placeholder}
+				onclick={() => setValue()}
+				class="w-full !rounded-none"
+			/>
+		{/if}
+		{#each items as item, i (i)}
+			<Button
+				variant="integrated"
+				label={getDisplayValue(item)}
+				onclick={() => setValue(item)}
+				class="w-full !rounded-none"
+				active={(value && getKey(value)) == getKey(item)}
+			/>
+		{/each}
 	{/snippet}
 </Floating>

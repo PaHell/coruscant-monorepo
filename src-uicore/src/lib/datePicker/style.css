@@ -1,0 +1,3 @@
+.date-picker {
+	@apply flex w-full items-center border-b border-black bg-interactive;
+}

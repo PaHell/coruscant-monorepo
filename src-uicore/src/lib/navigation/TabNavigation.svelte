@@ -12,9 +12,11 @@
 		match = 0,
 		matchQuery,
 		class: classes = '',
+		variant,
 		onchange
 	}: NavigationProperties<T> & {
 		class: string;
+		variant: 'option-bar' | 'tabs';
 		textSelector: (item: T) => string;
 	} = $props();
 
@@ -32,12 +34,12 @@
 	let refRoot: HTMLDivElement | undefined = $state(undefined);
 </script>
 
-<div bind:this={refRoot} class="tabs {classes}">
+<div bind:this={refRoot} class="tabs tabs-variant-{variant} {classes}">
 	<div class="indicator" style="width: {width}px; left: {offsetLeft}px;"><div></div></div>
 	<Navigation {items} {pathSelector} {match} {matchQuery} {onchange} bind:active>
 		{#snippet children({ item, href, active })}
 			<div class="tab">
-				<Button variant="transparent" {href} {active} label={textSelector(item)} />
+				<Button variant="integrated" {href} {active} label={textSelector(item)} />
 			</div>
 		{/snippet}
 	</Navigation>

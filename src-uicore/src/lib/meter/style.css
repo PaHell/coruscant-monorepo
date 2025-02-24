@@ -1,0 +1,5 @@
+.progress-bar.meter {
+	& > div {
+		@apply bg-danger;
+	}
+}

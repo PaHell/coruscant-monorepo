@@ -20,6 +20,7 @@
 					item: T;
 					active: boolean;
 					href: string;
+					index: number;
 				}
 			]
 		>;
@@ -39,6 +40,6 @@
 	}
 </script>
 
-{#each items as item, i (i)}
-	{@render children({ item, active: i == active, href: paths[i] })}
+{#each items as item, index (index)}
+	{@render children({ item, active: index == active, href: paths[index], index })}
 {/each}

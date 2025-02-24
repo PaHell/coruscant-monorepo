@@ -1,0 +1,18 @@
+.badge {
+	@apply rounded-full bg-interactive p-2;
+	& > .icon,
+	& > .text {
+		@apply text-inherit;
+	}
+	&.badge-active {
+		&.badge-variant-accent {
+			@apply bg-accent text-accent;
+		}
+		&.badge-variant-warning {
+			@apply bg-warning text-warning;
+		}
+		&.badge-variant-danger {
+			@apply bg-danger text-danger;
+		}
+	}
+}

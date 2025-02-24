@@ -1,0 +1,16 @@
+.alert {
+	@apply bg-interactive p-2;
+	& > .icon,
+	& > .text {
+		@apply text-inherit;
+	}
+	&.alert-variant-accent {
+		@apply bg-accent-foreground text-accent;
+	}
+	&.alert-variant-warning {
+		@apply bg-warning-foreground text-warning;
+	}
+	&.alert-variant-danger {
+		@apply bg-danger-foreground text-danger;
+	}
+}
