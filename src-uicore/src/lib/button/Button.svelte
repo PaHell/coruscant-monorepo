@@ -12,7 +12,6 @@
 		variant = 'primary',
 		size = 'default',
 		active = false,
-		class: classes,
 		children,
 		...others
 	}: ButtonProperties & HTMLButtonAttributes & HTMLAnchorAttributes = $props();
@@ -22,7 +21,7 @@
 	this={href ? 'a' : 'button'}
 	class="button button-size-{size} button-variant-{variant} {active
 		? 'button-active'
-		: ''} {classes}"
+		: ''} {others.class}"
 	type="button"
 	{...others}
 >

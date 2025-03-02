@@ -1,0 +1,9 @@
+.tutorial {
+	@apply w-96;
+	& > footer {
+		@apply flex items-center space-x-2;
+		& > .text {
+			@apply me-auto;
+		}
+	}
+}

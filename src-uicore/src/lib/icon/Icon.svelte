@@ -1,8 +1,13 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
 	import './style.css';
-	export let name: string;
-	let classes = '';
-	export { classes as class };
+
+	const {
+		name,
+		...others
+	}: HTMLAttributes<HTMLElement> & {
+		name: string;
+	} = $props();
 </script>
 
-<i class="icon ri-{name} {classes}"></i>
+<i class="icon ri-{name} {others.class}" {...others}></i>

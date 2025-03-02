@@ -21,7 +21,7 @@
 	const half = Math.ceil(enumValues.length / 2);
 	const items: EnumEntry[] = entries.slice(half);
 
-	let internalValue = $derived(entries.find((e) => e[1] === value));
+	let internalValue = $derived(entries.find((e) => e[1] === value) ?? null);
 </script>
 
 <Select
@@ -31,7 +31,8 @@
 	{getDisplayValue}
 	{placeholder}
 	onchange={(val) => {
-		value = val ? val[1] : undefined;
+		if (!val) return;
+		value = val[1];
 		onchange?.(val);
 	}}
 />

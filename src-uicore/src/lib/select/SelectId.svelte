@@ -7,22 +7,22 @@
 	let {
 		items = $bindable([]),
 		value = $bindable(),
-		key = 'id' as keyof T,
-		getDisplayValue = (item: T) => item as unknown as string,
+		key = 'id' as keyof NonNullable<T>,
+		getDisplayValue = (item: NonNullable<T>) => item as unknown as string,
 		placeholder,
 		allowNone,
 		onchange
 	}: {
-		items: T[];
-		value: TKey;
-		key?: keyof T;
-		getDisplayValue: (item: T) => string;
+		items: NonNullable<T>[];
+		value: NonNullable<T>[keyof NonNullable<T>] | null;
+		key?: keyof NonNullable<T>;
+		getDisplayValue: (item: NonNullable<T>) => string;
 		placeholder?: string;
 		allowNone?: boolean;
-		onchange?: (item: T) => unknown;
+		onchange?: (item: NonNullable<T> | null, index: number) => unknown;
 	} = $props();
 
-	let internalValue = $derived(items.find((e) => e[key] === value));
+	let internalValue = $derived(items.find((e) => e[key] === value) ?? null);
 </script>
 
 <Select
@@ -32,8 +32,8 @@
 	{getDisplayValue}
 	{placeholder}
 	{allowNone}
-	onchange={(val) => {
-		value = val ? val[key] : undefined;
-		onchange?.(val);
+	onchange={(val, idx) => {
+		value = val ? val[key] : null;
+		onchange?.(val, idx);
 	}}
 />

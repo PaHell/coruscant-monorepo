@@ -1,0 +1,24 @@
+.info-message {
+	@apply border-b border-border;
+	& > .button {
+		@apply border-l-2;
+		&.info-message-variant-accent {
+			@apply border-foreground text-accent;
+		}
+		&.info-message-variant-accent {
+			@apply border-foreground text-accent;
+		}
+		&.info-message-variant-warning {
+			@apply border-foreground text-warning;
+		}
+		&.info-message-variant-danger {
+			@apply border-foreground text-danger;
+		}
+	}
+	& > menu {
+		@apply hidden;
+	}
+	& > .button.button-active + menu {
+		@apply block;
+	}
+}

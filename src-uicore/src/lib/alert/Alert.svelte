@@ -3,21 +3,21 @@
 	import { Text } from '../text/index.js';
 	import { Icon } from '../icon/index.js';
 	import './style.css';
-	import type { HTMLBaseAttributes } from 'svelte/elements';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
 		icon,
 		variant = 'primary',
 		children,
 		...others
-	}: HTMLBaseAttributes & {
+	}: HTMLAttributes<HTMLDivElement> & {
 		icon?: string;
 		variant?: 'primary' | 'warning' | 'danger';
 		children: Snippet<[]>;
 	} = $props();
 </script>
 
-<div id={others.id} class="alert alert-variant-{variant} {others.class}">
+<div class="alert alert-variant-{variant} {others.class}" {...others}>
 	{#if icon}
 		<Icon name={icon} />
 	{/if}

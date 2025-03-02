@@ -14,11 +14,9 @@
 	import { clickOutside } from '../utils/use.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	type T = $$Generic;
 	let {
-		hidden = false,
+		hidden = $bindable(false),
 		id,
-		class: classes,
 		trigger,
 		menu,
 		placement,
@@ -88,7 +86,7 @@
 
 <svelte:window on:resize={debouncedCalculate} on:scroll={debouncedCalculate} />
 
-<div bind:this={refContainer} class="floating" {...others}>
+<div bind:this={refContainer} class="floating {others.class}" {...others}>
 	{@render trigger({
 		open: () => setHidden(false),
 		close: () => setHidden(true),
@@ -98,7 +96,7 @@
 		bind:this={refMenu}
 		{id}
 		class:hidden
-		class="floating-menu floating-menu-{placement} {classes}"
+		class="floating-menu floating-menu-{placement}"
 		style={menuStyle}
 		use:clickOutside={onClickOutside}
 	>

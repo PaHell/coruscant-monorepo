@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/button/Button.svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import type { NavigationProperties } from './index.js';
 	import Navigation from './Navigation.svelte';
 	import './TabNavigation.css';
@@ -11,14 +12,14 @@
 		textSelector,
 		match = 0,
 		matchQuery,
-		class: classes = '',
 		variant,
-		onchange
-	}: NavigationProperties<T> & {
-		class: string;
-		variant: 'option-bar' | 'tabs';
-		textSelector: (item: T) => string;
-	} = $props();
+		onchange,
+		...others
+	}: HTMLAttributes<HTMLDivElement> &
+		NavigationProperties<T> & {
+			variant: 'option-bar' | 'tabs';
+			textSelector: (item: T) => string;
+		} = $props();
 
 	let active = $state(0);
 	let offsetLeft = $state(0);
@@ -34,7 +35,7 @@
 	let refRoot: HTMLDivElement | undefined = $state(undefined);
 </script>
 
-<div bind:this={refRoot} class="tabs tabs-variant-{variant} {classes}">
+<div bind:this={refRoot} {...others} class="tabs tabs-variant-{variant} {others.class}">
 	<div class="indicator" style="width: {width}px; left: {offsetLeft}px;"><div></div></div>
 	<Navigation {items} {pathSelector} {match} {matchQuery} {onchange} bind:active>
 		{#snippet children({ item, href, active })}

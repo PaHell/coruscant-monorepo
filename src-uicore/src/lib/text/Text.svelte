@@ -1,12 +1,13 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import './text.css';
+	import type { HTMLAttributes } from 'svelte/elements';
 	const {
 		small = false,
 		secondary = false,
-		class: classes,
-		children
-	}: {
+		children,
+		...others
+	}: HTMLAttributes<HTMLParagraphElement> & {
 		small?: boolean;
 		secondary?: boolean;
 		class?: string;
@@ -14,6 +15,6 @@
 	} = $props();
 </script>
 
-<p class="text {classes}" class:small class:secondary>
+<p {...others} class="text {others.class}" class:small class:secondary>
 	{@render children()}
 </p>

@@ -1,5 +1,6 @@
 export { default as Navigation } from "./Navigation.svelte";
 export { default as TabNavigation } from "./TabNavigation.svelte";
+export { default as SideNavigation } from "./SideNavigation.svelte";
 
 export type NavigationProperties<T> = {
       items: T[];

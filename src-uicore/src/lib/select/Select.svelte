@@ -3,31 +3,43 @@
 	import { Button } from '../button/index.js';
 	import { Floating } from '../floating/index.js';
 	import { Icon, icons } from '../icon/index.js';
+	import type { Snippet } from 'svelte';
 
 	type T = $$Generic;
 	type TKey = $$Generic;
 	let {
 		items = $bindable([]),
-		value = $bindable(undefined),
-		getKey = (item: T) => item as unknown as TKey,
-		getDisplayValue = (item: T) => item as unknown as string,
+		value = $bindable(),
+		getKey = (item: NonNullable<T>) => item as unknown as TKey,
+		getDisplayValue = (item: NonNullable<T>) => item as unknown as string,
 		placeholder = 'Placeholder',
 		allowNone = false,
-		onchange
+		onchange,
+		item
 	}: {
-		items: T[];
-		value: T | undefined;
-		getKey?: (item: T) => TKey;
-		getDisplayValue: (item: T) => string;
+		items: NonNullable<T>[];
+		value: NonNullable<T> | null;
+		getKey?: (item: NonNullable<T>) => TKey;
+		getDisplayValue: (item: NonNullable<T>) => string;
 		placeholder?: string;
 		allowNone?: boolean;
-		onchange?: (item: T | undefined, index: number) => unknown;
+		useUndefined?: boolean;
+		onchange?: (item: NonNullable<T> | null, index: number) => unknown;
+		item?: Snippet<
+			[
+				{
+					item: T;
+					index: number;
+					active: boolean;
+				}
+			]
+		>;
 	} = $props();
 
 	$effect(internalOnChange);
 
 	function setValue(newValue?: T) {
-		value = newValue;
+		value = newValue ?? null;
 		console.log({ value });
 		internalOnChange();
 	}
@@ -64,14 +76,20 @@
 				class="w-full !rounded-none"
 			/>
 		{/if}
-		{#each items as item, i (i)}
+		{#each items as _item, i (i)}
 			<Button
 				variant="integrated"
-				label={getDisplayValue(item)}
-				onclick={() => setValue(item)}
+				label={getDisplayValue(_item)}
+				onclick={() => setValue(_item)}
 				class="w-full !rounded-none"
-				active={(value && getKey(value)) == getKey(item)}
-			/>
+				active={(value && getKey(value)) == getKey(_item)}
+			>
+				{@render item?.({
+					item: _item,
+					index: i,
+					active: (value && getKey(value)) == getKey(_item)
+				})}
+			</Button>
 		{/each}
 	{/snippet}
 </Floating>
