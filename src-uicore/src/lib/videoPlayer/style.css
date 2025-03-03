@@ -1,0 +1,15 @@
+.video-player {
+	@apply aspect-video;
+	& > .video-player-placeholder {
+		@apply flex h-full w-full items-center justify-center;
+		& > img {
+			@apply object-cover;
+		}
+		& > .button {
+			@apply absolute;
+		}
+	}
+	& > video {
+		@apply h-full w-full;
+	}
+}

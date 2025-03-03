@@ -19,13 +19,13 @@
 		children: Snippet<[]>;
 	} = $props();
 
-	const { subscribe, ...methods } = createNotificationStore(timeout);
+	const store = createNotificationStore(timeout);
 
-	setContext<NotificationContext>(NotificationContextKey, methods);
+	setContext<NotificationContext>(NotificationContextKey, store);
 
 	let notifications = $state<(Notification & { id: number })[]>([]);
 
-	const unsubscriber = subscribe((value) => {
+	const unsubscriber = store.subscribe((value) => {
 		notifications = value;
 	});
 
@@ -53,7 +53,7 @@
 					icon={icons.controls.close}
 					label="Close"
 					hideLabel
-					onclick={() => methods.remove(notification.id)}
+					onclick={() => store.remove(notification.id)}
 				/>
 			</div>
 		{/each}

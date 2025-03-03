@@ -5,6 +5,7 @@
 	import { Text } from '../text/index.js';
 	import { MessagePayloadType } from './index.js';
 	import { UserAvatar } from '../userAvatar/index.js';
+	import { VideoPlayer } from '../videoPlayer/index.js';
 
 	let {
 		payload,
@@ -56,9 +57,7 @@
 					<track kind="captions" />
 				</audio>
 			{:else if type() === MessagePayloadType.Video}
-				<video src={payload} controls>
-					<track kind="captions" />
-				</video>
+				<VideoPlayer title={payload} src={payload} poster={payload} tracks={[]} />
 			{:else}
 				<p>Unsupported message type</p>
 			{/if}

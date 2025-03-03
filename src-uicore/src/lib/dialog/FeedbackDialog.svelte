@@ -4,6 +4,7 @@
 	import { Button } from '../button/index.js';
 	import type { FeedbackModel } from './index.js';
 	import { Input } from '../input/index.js';
+	import { Rating } from '../rating/index.js';
 
 	let {
 		rating = $bindable(),
@@ -19,6 +20,7 @@
 
 <Modal bind:visible title="Please provide your feedback" class="feedback-dialog">
 	{#snippet body()}
+		<Rating bind:value={rating} />
 		<Input bind:value={message} label="Message" isTextarea required />
 		<Input bind:value={email} label="Email" />
 	{/snippet}
