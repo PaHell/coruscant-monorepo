@@ -6,53 +6,99 @@
 	import { Alert } from '../alert/index.js';
 	import type { HTMLFormAttributes } from 'svelte/elements';
 	import {
+		Column,
 		createRowStore,
 		createTableStore,
-		Row,
 		RowState,
 		TableContextKey,
 		type RowContext,
+		type RowStoreData,
 		type TableContext,
 		type TableProperties
 	} from './index.js';
 	import { get } from 'svelte/store';
+	import { Checkbox } from '../checkbox/index.js';
+	import { createSubscriber } from 'svelte/reactivity';
+	import Subscriber from './Subscriber.svelte';
 
 	type T = $$Generic<object>;
 	let {
 		key = 'id' as keyof T,
 		items = $bindable(),
 		selected = $bindable([]),
+		searchValue = $bindable(''),
+		hideState = false,
+		hideCheckbox = false,
+		allowDelete = true,
 		onAdd,
-		onEdit,
-		onDelete,
-		onSelect,
 		onChange,
-		children,
+		columns,
+		actions,
 		...others
 	}: TableProperties<T> & {
-		children: Snippet<[TableContext<T>]>;
+		columns: Snippet<[TableContext<T>]>;
+		actions?: Snippet<[RowContext<T>]>;
 	} = $props();
 
 	const store = createTableStore<T>();
-	const contexts: RowContext<T>[] = $state([]);
 
+	let contexts: RowContext<T>[] = $state([]);
 	$effect(() => {
-		const contextDataIds = contexts.map((s) => get(s).data[key]);
 		for (const item of items) {
-			if (contextDataIds.find((id) => id === item[key])) continue;
-			contexts.push(
-				createRowStore({
-					state: RowState.Unmodified,
-					data: item
-				})
-			);
+			getOrCreateRowContext(item);
 		}
 	});
+
+	function getOrCreateRowContext(item: T): RowContext<T> {
+		const context = contexts.find((s) => get(s).data[key] === item[key]);
+		if (context) return context;
+		const newRow = createRowStore({
+			state: RowState.Unmodified,
+			data: item
+		});
+		contexts.push(newRow);
+		return newRow;
+	}
 </script>
 
-<Row table={store}>
-	{@render children(store)}
-</Row>
+{#if !hideState}
+	<Column table={store} title="State">
+		{#snippet children(row)}
+			<Subscriber store={row}>
+				{#snippet children(data)}
+					<pre>{data.state}</pre>
+					<div class="state-{get(row).state.toString()}">{get(row).state.toString()}</div>
+				{/snippet}
+			</Subscriber>
+		{/snippet}
+	</Column>
+{/if}
+{#if !hideCheckbox}
+	<Column table={store} title="Checkbox">
+		{#snippet children(row)}
+			<Checkbox
+				variant="checkbox"
+				value={get(row).selected}
+				onchange={row.toggleSelected}
+				label=""
+			/>
+		{/snippet}
+	</Column>
+{/if}
+{@render columns(store)}
+{#if allowDelete || actions}
+	<Column table={store} title="Actions">
+		{#snippet children(row)}
+			{@render actions?.(row)}
+			{#if allowDelete}
+				<Button
+					label={get(row).state === RowState.Deleted ? 'Keep' : 'Delete'}
+					onclick={row.toggleDelete}
+				/>
+			{/if}
+		{/snippet}
+	</Column>
+{/if}
 <table>
 	<thead>
 		<tr>

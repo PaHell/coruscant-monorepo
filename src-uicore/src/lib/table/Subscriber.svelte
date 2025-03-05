@@ -7,19 +7,17 @@
 		type RowContext,
 		type TableContext
 	} from './index.js';
+	import type { readable, writable } from 'svelte/store';
 
-	type T = $$Generic;
+	type TStore = $$Generic<writable>;
+	type TValue = $$Generic<readable<TStore>>;
 	let {
-		table,
-		key = Math.trunc(Math.random() * 100000),
-		title,
-		width,
-		children,
-		...others
-	}: ColumnProperties<T> & {
-		table: TableContext<T>;
+		store,
+		children
+	}: {
+		store: TStore;
+		children: Snippet<[TValue]>;
 	} = $props();
-
-	table.register({ key, title, width, children });
-	onDestroy(() => table.destroy(key));
 </script>
+
+{@render children($store)}

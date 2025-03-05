@@ -24,6 +24,8 @@
 <Button variant="integrated" {label} onclick={toggle} class="checkbox checkbox-variant-{variant}">
 	{#snippet children()}
 		<Icon name={icons.controls.dropdown} />
-		<span>{label}</span>
+		{#if label}
+			<span>{label}</span>
+		{/if}
 	{/snippet}
 </Button>
