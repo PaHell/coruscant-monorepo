@@ -1,7 +1,10 @@
 import type { Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
 import { writable, type Readable } from "svelte/store";
 
 export { default as Table } from "./Table.svelte";
+export { default as HeaderRow } from "./HeaderRow.svelte";
+export { default as Row } from "./Row.svelte";
 export { default as Column } from "./Column.svelte";
 
 export const TableContextKey = Symbol("TableContext");
@@ -29,10 +32,12 @@ export type ColumnProperties<T> = {
       key?: keyof T | number;
       title: string;
       definition?: string;
-      width?: number;
+      width?: string;
       initiallyHidden?: boolean;
       hideable?: boolean;
-      children: Snippet<[RowContext<T>]>;
+      cell?: HTMLAttributes<HTMLDivElement>;
+      header?: HTMLAttributes<HTMLDivElement>;
+      children: Snippet<[RowStoreData<T> & RowStoreMethods<T>]>;
 };
 
 export type ColumnPropertiesWithKey<T> = ColumnProperties<T> & {
@@ -69,7 +74,15 @@ export enum RowState {
       Imported
 }
 
-type RowStoreMethods<T> = {
+export const RowStateClassMap: Record<RowState, string> = {
+      [RowState.Unmodified]: "unmodified",
+      [RowState.Modified]: "modified",
+      [RowState.Added]: "added",
+      [RowState.Deleted]: "deleted",
+      [RowState.Imported]: "imported",
+};
+
+export type RowStoreMethods<T> = {
       update: (store: RowStoreData<T>) => void;
       updateProperty: (key: keyof T, value: T[keyof T]) => void;
       toggleDelete: () => void;
@@ -105,7 +118,7 @@ export const createRowStore = function <T>(data: InitRowStoreData<T>) {
       return {
             subscribe,
             update: store => update(() => store),
-            updateProperty: (key, value) => update(store => ({ ...store, data: { ...store.data, [key]: value } })),
+            updateProperty: (key, value) => update(store => ({ ...store, data: { ...store.data, [key]: value }, state: store.state === RowState.Unmodified ? RowState.Modified : store.state })),
             toggleDelete: () => update(store => ({ ...store, state: store.state === RowState.Deleted ? store.initialState : RowState.Deleted })),
             setState: state => update(store => ({ ...store, state })),
             toggleSelected: () => update(store => ({ ...store, selected: !store.selected })),

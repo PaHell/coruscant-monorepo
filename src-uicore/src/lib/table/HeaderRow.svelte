@@ -1,0 +1,28 @@
+<script lang="ts">
+	import { Button } from '../button/index.js';
+	import { Icon, icons } from '../icon/index.js';
+	import { Text } from '../text/index.js';
+	import { type TableContext } from './index.js';
+
+	type T = $$Generic<writable>;
+	let {
+		table
+	}: {
+		table: TableContext<T>;
+	} = $props();
+</script>
+
+{#each $table.columns as col}
+	<div {...col.header} class="cell header-cell {col.header?.class ?? ''}">
+		{#if typeof col.key === 'number'}
+			<Text>
+				{col.title}
+			</Text>
+		{:else}
+			<Button variant="form" label={col.title}>
+				<Text>{col.title}</Text>
+				<Icon name={icons.controls.dropdown} />
+			</Button>
+		{/if}
+	</div>
+{/each}

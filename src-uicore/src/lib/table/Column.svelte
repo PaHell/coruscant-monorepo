@@ -1,25 +1,16 @@
 <script lang="ts">
-	import './style.css';
-	import { getContext, onDestroy, setContext, type Snippet } from 'svelte';
-	import {
-		TableContextKey,
-		type ColumnProperties,
-		type RowContext,
-		type TableContext
-	} from './index.js';
+	import { onDestroy } from 'svelte';
+	import { type ColumnProperties, type TableContext } from './index.js';
 
 	type T = $$Generic;
 	let {
-		table,
 		key = Math.trunc(Math.random() * 100000),
-		title,
-		width,
-		children,
-		...others
+		table,
+		...column
 	}: ColumnProperties<T> & {
 		table: TableContext<T>;
 	} = $props();
 
-	table.register({ key, title, width, children });
+	table.register({ ...column, key });
 	onDestroy(() => table.destroy(key));
 </script>

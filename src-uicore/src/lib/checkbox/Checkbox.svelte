@@ -6,12 +6,12 @@
 	let {
 		value = $bindable(false),
 		label,
-		variant,
+		variant = 'default',
 		onchange
 	}: {
 		value: boolean;
 		label: string;
-		variant: 'checkbox' | 'toggle';
+		variant?: 'default' | 'toggle';
 		onchange?: (value: boolean) => unknown;
 	} = $props();
 
@@ -21,9 +21,14 @@
 	}
 </script>
 
-<Button variant="integrated" {label} onclick={toggle} class="checkbox checkbox-variant-{variant}">
+<Button
+	variant="integrated"
+	{label}
+	onclick={toggle}
+	class="checkbox checkbox-variant-{variant} {value ? 'checkbox-checked' : ''}"
+>
 	{#snippet children()}
-		<Icon name={icons.controls.dropdown} />
+		<Icon name={icons.controls.checkmark} />
 		{#if label}
 			<span>{label}</span>
 		{/if}

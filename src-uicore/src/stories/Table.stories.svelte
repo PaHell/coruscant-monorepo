@@ -4,7 +4,8 @@
 	import { Button, icons } from '$src/lib/index.js';
 	import { Column, type RowContext } from '$src/lib/table/index.js';
 	import { get } from 'svelte/store';
-	import Subscriber from '$src/lib/table/Subscriber.svelte';
+	import { Text } from '$src/lib/text/index.js';
+	import { Input } from '$src/lib/input/index.js';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -21,43 +22,49 @@
 		description?: string;
 	};
 
-	const items: Model[] = Array.from({ length: 10 }, (_, i) => i + 1).map((i) => ({
+	const items: Model[] = Array.from({ length: 5 }, (_, i) => i + 1).map((i) => ({
 		id: i,
 		name: `Item ${i}`,
 		description: `Description ${i}`
 	}));
 	console.log(items);
 
-	function onEdit(row: RowContext<Model>) {
-		console.log('Edit', get(row).data);
+	function onEdit(item: Model) {
+		console.log('Edit', item);
 	}
 </script>
 
-<!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story name="Default" args={{ items }}>
 	<Table {items}>
-		{#snippet actions(row)}
-			<Button icon={icons.controls.add} label="Edit" onclick={() => onEdit(row)} />
+		{#snippet actions({ data })}
+			<Button
+				variant="form"
+				icon={icons.controls.edit}
+				label="Edit"
+				hideLabel
+				onclick={() => onEdit(data)}
+			/>
 		{/snippet}
 		{#snippet columns(table)}
-			<Column {table} key="id" title="ID">
-				{#snippet children(row)}
-					<Subscriber store={row}>
-						{#snippet children(data)}
-							{data.id}
-						{/snippet}
-					</Subscriber>
-					{get(row).data.id}
+			<Column {table} key="id" title="ID" width="1fr">
+				{#snippet children({ data })}
+					<Text>{data.id}</Text>
 				{/snippet}
 			</Column>
-			<Column {table} key="name" title="Name">
-				{#snippet children(row)}
-					{get(row).data.name}
+			<Column {table} key="name" title="Name" width="2fr" cell={{ class: 'bg-danger' }}>
+				{#snippet children({ data, updateProperty })}
+					<Input
+						value={data.name}
+						onchange={(e) => updateProperty('name', e.currentTarget.value)}
+					/>
 				{/snippet}
 			</Column>
-			<Column {table} key="description" title="Description">
-				{#snippet children(row)}
-					{get(row).data.name}
+			<Column {table} key="description" title="Description" width="3fr">
+				{#snippet children({ data, updateProperty })}
+					<Input
+						value={data.description}
+						onchange={(e) => updateProperty('description', e.currentTarget.value)}
+					/>
 				{/snippet}
 			</Column>
 		{/snippet}

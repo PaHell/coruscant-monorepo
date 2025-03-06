@@ -1,2 +1,18 @@
 .button.checkbox {
+	&.checkbox-variant-default {
+		& > .icon {
+			@apply h-6 w-6 flex-none rounded border border-secondary indent-[-1.5px] text-transparent;
+			line-height: calc(1.5rem - 2px) !important;
+		}
+		&.checkbox-checked {
+			& > .icon {
+				@apply !border-accent bg-accent text-white;
+			}
+		}
+		&:hover {
+			& > .icon {
+				@apply border-primary;
+			}
+		}
+	}
 }

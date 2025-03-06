@@ -19,11 +19,11 @@
 
 <svelte:element
 	this={href ? 'a' : 'button'}
+	{...others}
 	class="button button-size-{size} button-variant-{variant} {active
 		? 'button-active'
 		: ''} {others.class}"
 	type="button"
-	{...others}
 >
 	{#if children}
 		{@render children()}

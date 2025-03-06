@@ -1,1 +1,47 @@
+.app-table {
+	@apply grid gap-y-px bg-secondary pb-px;
 
+	& > .cell {
+		@apply flex overflow-hidden bg-foreground;
+
+		&.header-cell {
+			@apply bg-background;
+		}
+
+		&.state-cell {
+			@apply items-center justify-center;
+
+			& > div {
+				@apply h-2 w-2 !flex-none rounded-full;
+				&.state-unmodified {
+					@apply bg-secondary;
+				}
+				&.state-modified {
+					@apply bg-warning;
+				}
+				&.state-added {
+					@apply bg-accent;
+				}
+				&.state-deleted {
+					@apply bg-danger;
+				}
+				&.state-imported {
+					@apply bg-green-500;
+				}
+			}
+		}
+
+		& > *:first-child:last-child {
+			@apply flex-1;
+		}
+
+		& > .button.button-variant-form,
+		& > .input {
+			@apply -mb-px;
+		}
+
+		& > .text {
+			@apply truncate px-4 py-3;
+		}
+	}
+}
