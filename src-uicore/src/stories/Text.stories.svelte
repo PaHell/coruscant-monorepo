@@ -1,7 +1,6 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import Heading from '$lib/text/Heading.svelte';
-	import Text from '$src/lib/text/Text.svelte';
+	import { Text, Heading } from '$lib/index.js';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({

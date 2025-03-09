@@ -3,6 +3,8 @@
 
 @import 'tailwindcss';
 
+@import './imports.css';
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -356,5 +358,3 @@ body,
 .docs-story {
 	@apply bg-background;
 }
-
-@import './imports.css';

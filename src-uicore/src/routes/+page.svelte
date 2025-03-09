@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Button from '$lib/button/Button.svelte';
-	import Heading from '$src/lib/text/Heading.svelte';
-	import { Floating } from '$src/lib/floating/index.js';
+	import { Button, Heading, Floating } from '$lib/index.js';
 	import type { Placement } from '@floating-ui/dom';
 
 	let placement: Placement = $state('bottom-start');

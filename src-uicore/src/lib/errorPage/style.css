@@ -1,11 +1,11 @@
 .error-page {
 	@apply flex items-center justify-center;
-	& > div {
+	> div {
 		@apply w-full max-w-96;
-		& > .heading:first-child {
+		> .heading:first-child {
 			@apply text-accent;
 		}
-		& > footer {
+		> footer {
 			@apply flex items-center justify-center space-x-2;
 		}
 	}

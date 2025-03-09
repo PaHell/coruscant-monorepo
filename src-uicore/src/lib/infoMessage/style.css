@@ -1,6 +1,6 @@
 .info-message {
-	@apply border-b border-border;
-	& > .button {
+	@apply border-border border-b;
+	> .button {
 		@apply border-l-2;
 		&.info-message-variant-accent {
 			@apply border-foreground text-accent;
@@ -15,10 +15,10 @@
 			@apply border-foreground text-danger;
 		}
 	}
-	& > menu {
+	> menu {
 		@apply hidden;
 	}
-	& > .button.button-active + menu {
+	> .button.button-active + menu {
 		@apply block;
 	}
 }

@@ -1,9 +1,7 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import { Select } from '$lib/select/index.js';
-	import SelectEnum from '$src/lib/select/SelectEnum.svelte';
+	import { Select, SelectEnum, SelectId } from '$lib/index.js';
 	import { OperatingSystem } from './index.js';
-	import SelectId from '$src/lib/select/SelectId.svelte';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({

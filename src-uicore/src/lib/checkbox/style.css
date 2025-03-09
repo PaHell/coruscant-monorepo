@@ -1,16 +1,16 @@
 .button.checkbox {
 	&.checkbox-variant-default {
-		& > .icon {
-			@apply h-6 w-6 flex-none rounded border border-secondary indent-[-1.5px] text-transparent;
+		> .icon {
+			@apply border-secondary h-6 w-6 flex-none rounded border indent-[-1.5px] text-transparent;
 			line-height: calc(1.5rem - 2px) !important;
 		}
 		&.checkbox-checked {
-			& > .icon {
+			> .icon {
 				@apply !border-accent bg-accent text-white;
 			}
 		}
 		&:hover {
-			& > .icon {
+			> .icon {
 				@apply border-primary;
 			}
 		}

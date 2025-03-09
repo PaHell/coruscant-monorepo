@@ -1,36 +1,36 @@
 .input {
-	@apply flex w-full items-center border-b border-primary bg-interactive;
+	@apply border-primary bg-interactive flex w-full items-center border-b;
 
-	& > .icon {
+	> .icon {
 		@apply w-10;
 	}
 
-	& > div {
+	> div {
 		@apply flex flex-1 flex-col;
-		& > label {
-			@apply mb-[-1.125rem] mt-0.5 h-4 px-2 !leading-[1.1rem];
+		> label {
+			@apply mt-0.5 mb-[-1.125rem] h-4 px-2 !leading-[1.1rem];
 		}
-		& > input {
+		> input {
 			@apply h-12;
 			height: calc(3rem - 2px);
 		}
-		& > textarea {
+		> textarea {
 			@apply h-20 min-h-12;
 		}
-		& > input,
-		& > textarea {
-			@apply border-0 !bg-transparent !px-2 !pt-2.5 text-base font-normal !leading-none text-primary !ring-0 placeholder:font-light placeholder:text-secondary;
+		> input,
+		> textarea {
+			@apply text-primary placeholder:text-secondary border-0 !bg-transparent !px-2 !pt-2.5 text-base !leading-none font-normal !ring-0 placeholder:font-light;
 		}
-		& > label + input,
-		& > label + textarea {
+		> label + input,
+		> label + textarea {
 			@apply !pt-5;
 		}
 	}
 
-	& > .icon + div {
-		& > label,
-		& > input,
-		& > textarea {
+	> .icon + div {
+		> label,
+		> input,
+		> textarea {
 			@apply !ps-0;
 		}
 	}
@@ -41,12 +41,12 @@
 
 	&:focus-within {
 		@apply border-accent bg-accent-foreground;
-		& > .icon {
+		> .icon {
 			@apply text-accent;
 		}
-		& > div {
-			& > input,
-			& > textarea {
+		> div {
+			> input,
+			> textarea {
 				@apply placeholder:text-accent/50;
 			}
 		}

@@ -1,12 +1,12 @@
 .header {
 	@apply flex items-center space-x-2;
-	& > .branding {
+	> .branding {
 		@apply me-auto;
 	}
-	& > nav {
+	> nav {
 		@apply flex flex-1 items-center space-x-2;
 	}
-	& > .links {
+	> .links {
 		@apply flex items-center space-x-2;
 	}
 }

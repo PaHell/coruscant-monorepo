@@ -1,8 +1,6 @@
 <script lang="ts">
-	import Button from '$lib/button/Button.svelte';
+	import { Button, Icon, icons, Navigation } from '$lib/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { Icon, icons } from '../icon/index.js';
-	import { Navigation } from '../navigation/index.js';
 
 	type T = $$Generic;
 	let {

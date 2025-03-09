@@ -1,11 +1,7 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import Table from '$lib/table/Table.svelte';
-	import { Button, icons } from '$src/lib/index.js';
-	import { Column, type RowContext } from '$src/lib/table/index.js';
+	import { Text, Input, Button, icons, Table, Column, type RowContext } from '$lib/index.js';
 	import { get } from 'svelte/store';
-	import { Text } from '$src/lib/text/index.js';
-	import { Input } from '$src/lib/input/index.js';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({

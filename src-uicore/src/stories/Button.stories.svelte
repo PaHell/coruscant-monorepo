@@ -1,7 +1,6 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import Button from '$lib/button/Button.svelte';
-	import { icons } from '$src/lib/index.js';
+	import { Button, icons } from '$lib/index.js';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({

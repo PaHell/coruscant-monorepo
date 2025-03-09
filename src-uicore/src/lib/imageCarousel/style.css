@@ -1,11 +1,11 @@
 .image-carousel {
-	& > main {
+	> main {
 		@apply relative grid grid-cols-[1fr_auto_1fr];
-		& > .button {
+		> .button {
 			@apply fixed;
 		}
 	}
-	& > footer {
+	> footer {
 		@apply flex flex-wrap space-x-4;
 	}
 }

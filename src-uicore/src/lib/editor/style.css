@@ -1,12 +1,12 @@
 .editor {
 	@apply flex min-h-96 flex-col;
 
-	& > header {
-		@apply mb-4 flex flex-wrap bg-foreground p-4;
+	> header {
+		@apply bg-foreground mb-4 flex flex-wrap p-4;
 	}
-	& > main {
-		@apply flex-1 bg-foreground p-4;
-		& > textarea {
+	> main {
+		@apply bg-foreground flex-1 p-4;
+		> textarea {
 			@apply h-full w-full;
 		}
 	}

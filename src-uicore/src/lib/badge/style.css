@@ -1,7 +1,7 @@
 .badge {
-	@apply rounded-full bg-interactive p-2;
-	& > .icon,
-	& > .text {
+	@apply bg-interactive rounded-full p-2;
+	> .icon,
+	> .text {
 		@apply text-inherit;
 	}
 	&.badge-active {

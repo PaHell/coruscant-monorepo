@@ -1,10 +1,10 @@
 .file-input {
-	& > input {
+	> input {
 		@apply hidden;
 	}
-	& > label {
-		@apply flex w-full items-center space-y-4 border border-black bg-interactive p-4;
+	> label {
+		@apply bg-interactive flex w-full items-center space-y-4 border border-black p-4;
 	}
-	& > div {
+	> div {
 	}
 }

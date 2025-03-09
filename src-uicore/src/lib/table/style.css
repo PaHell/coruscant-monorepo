@@ -1,7 +1,7 @@
 .app-table {
-	@apply grid gap-y-px bg-secondary pb-px;
+	@apply bg-secondary grid gap-y-px pb-px;
 
-	& > .table-row {
+	> .table-row {
 		@apply grid grid-cols-subgrid;
 		grid-column: 1 / -1;
 
@@ -17,13 +17,13 @@
 			@apply bg-accent-foreground/50;
 		}
 
-		& > .table-cell {
+		> .table-cell {
 			@apply flex;
 
 			&.state-cell {
 				@apply items-center justify-center;
 
-				& > div {
+				> div {
 					@apply h-2 w-2 !flex-none rounded-full;
 					&.state-unmodified {
 						@apply bg-secondary;
@@ -43,16 +43,16 @@
 				}
 			}
 
-			& > *:first-child:last-child {
+			> *:first-child:last-child {
 				@apply flex-1;
 			}
 
-			& > .button.button-variant-form,
-			& > .input {
+			> .button.button-variant-form,
+			> .input {
 				@apply -mb-px;
 			}
 
-			& > .text {
+			> .text {
 				@apply truncate px-4 py-3;
 			}
 		}

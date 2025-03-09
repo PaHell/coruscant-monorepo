@@ -1,8 +1,6 @@
 <script lang="ts">
-	import Button from '$lib/button/Button.svelte';
+	import { Button, Navigation, type NavigationProperties } from '$lib/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import type { NavigationProperties } from './index.js';
-	import Navigation from './Navigation.svelte';
 
 	type T = $$Generic;
 	let {
@@ -34,7 +32,11 @@
 	let refRoot: HTMLDivElement | undefined = $state(undefined);
 </script>
 
-<div bind:this={refRoot} {...others} class="tabs tabs-variant-{variant} {others.class}">
+<div
+	bind:this={refRoot}
+	{...others}
+	class="tab-navigation tab-navigation-variant-{variant} {others.class}"
+>
 	<div class="indicator" style="width: {width}px; left: {offsetLeft}px;"><div></div></div>
 	<Navigation {items} {pathSelector} {match} {matchQuery} {onchange} bind:active>
 		{#snippet children({ item, href, active })}

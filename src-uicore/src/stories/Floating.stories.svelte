@@ -1,8 +1,6 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import { Floating } from '$src/lib/floating/index.js';
-	import { Text } from '$lib/text/index.js';
-	import { Button } from '$lib/button/index.js';
+	import { Text, Button, Floating } from '$lib/index.js';
 	import type { Placement } from '@floating-ui/dom';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories

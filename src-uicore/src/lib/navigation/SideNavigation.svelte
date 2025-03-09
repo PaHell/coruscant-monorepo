@@ -1,8 +1,6 @@
 <script lang="ts">
-	import Button from '$lib/button/Button.svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { Icon, icons } from '../icon/index.js';
-	import Navigation from './Navigation.svelte';
+	import { Navigation, Button, Icon, icons } from '$lib/index.js';
 
 	type SideNavigationItem = {
 		icon: string;

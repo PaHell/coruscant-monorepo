@@ -1,8 +1,6 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import { Modal } from '$lib/modal/index.js';
-	import { Text } from '$lib/text/index.js';
-	import { Button } from '$lib/button/index.js';
+	import { Modal, Text, Button } from '$lib/index.js';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
