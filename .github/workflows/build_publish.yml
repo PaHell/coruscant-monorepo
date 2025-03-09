@@ -23,6 +23,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
       - run: bun install
+      - name: Run prepare
+        run: bun run prepare
       - name: Build package
         run: bun run prepack
       - name: Publish package
