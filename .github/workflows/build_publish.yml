@@ -34,7 +34,7 @@ jobs:
         id: get_version
         run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
       - name: Delete previous package with same version
-        uses: paulushcgcj/delete-github-package@v1.0.0
+        uses: paulushcgcj/delete-github-package@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           type: npm
