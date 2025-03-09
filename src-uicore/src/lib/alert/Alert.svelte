@@ -2,7 +2,6 @@
 	import { type Snippet } from 'svelte';
 	import { Text } from '../text/index.js';
 	import { Icon } from '../icon/index.js';
-	import './style.css';
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {

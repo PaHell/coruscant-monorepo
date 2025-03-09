@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Button } from '../button/index.js';
 	import { icons } from '../icon/index.js';
 	import { UserAvatar } from '../userAvatar/index.js';

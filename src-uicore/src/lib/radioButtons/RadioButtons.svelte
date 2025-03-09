@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Button } from '../button/index.js';
 
 	type T = $$Generic;

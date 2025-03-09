@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Input } from '../input/index.js';
 	import { Floating } from '../floating/index.js';
 	import { Button } from '../button/index.js';

@@ -13,7 +13,7 @@
 </script>
 
 {#each $table.columns as col}
-	<div {...col.header} class="cell header-cell {col.header?.class ?? ''}">
+	<div {...col.header} class="table-cell-header table-cell {col.header?.class ?? ''}">
 		{#if typeof col.key === 'number'}
 			<Text>
 				{col.title}

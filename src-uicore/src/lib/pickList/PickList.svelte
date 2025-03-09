@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Button } from '../button/index.js';
 	import { Floating } from '../floating/index.js';
 	import { Icon, icons } from '../icon/index.js';
@@ -19,8 +18,6 @@
 		getDisplayValue: (item: T) => string;
 		onchange?: (item: T | undefined, index: number) => unknown;
 	} = $props();
-
-	$effect(internalOnChange);
 
 	function toggleValue(newValue: T) {
 		const key = getKey(newValue);

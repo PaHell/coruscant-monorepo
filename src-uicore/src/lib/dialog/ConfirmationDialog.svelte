@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
-	import './confirmationDialog.css';
 	import { Modal } from '../modal/index.js';
 	import { Button } from '../button/index.js';
 

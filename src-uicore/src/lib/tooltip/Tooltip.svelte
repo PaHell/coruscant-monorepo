@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Floating } from '../floating/index.js';
 	import Text from '../text/Text.svelte';
 	import type { Snippet } from 'svelte';

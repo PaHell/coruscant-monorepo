@@ -3,7 +3,6 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { NavigationProperties } from './index.js';
 	import Navigation from './Navigation.svelte';
-	import './TabNavigation.css';
 
 	type T = $$Generic;
 	let {

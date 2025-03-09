@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Button } from '../button/index.js';
 	import { Text } from '../text/index.js';
 	import { onDestroy, setContext, type Snippet } from 'svelte';
@@ -79,7 +78,7 @@
 		</Column>
 	{/if}
 	{#if !hideCheckbox}
-		<Column table={store} title="Checkbox" width="3rem">
+		<Column table={store} title="Checkbox" width="3rem" cell={{ class: 'table-cell-select' }}>
 			{#snippet children(row)}
 				<Checkbox value={row.selected} onchange={row.toggleSelected} label="" />
 			{/snippet}
@@ -87,7 +86,7 @@
 	{/if}
 	{@render columns(store)}
 	{#if allowDelete || actions}
-		<Column table={store} title="Actions" width="auto">
+		<Column table={store} title="Actions" width="auto" cell={{ class: 'table-cell-actions' }}>
 			{#snippet children(row)}
 				{@render actions?.(row)}
 				{#if allowDelete}
@@ -102,7 +101,9 @@
 			{/snippet}
 		</Column>
 	{/if}
-	<HeaderRow table={store} />
+	<div class="table-row-header table-row">
+		<HeaderRow table={store} />
+	</div>
 	{#each items as item}
 		<Row table={store} context={getOrCreateRowContext(item)} />
 	{/each}

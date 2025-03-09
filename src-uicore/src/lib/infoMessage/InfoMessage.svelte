@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
-	import './style.css';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { Button } from '../button/index.js';
 

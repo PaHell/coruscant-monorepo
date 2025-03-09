@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Button } from '../button/index.js';
 	import { Text } from '../text/index.js';
 	import { createFormStore, FormContextKey, type FormContext } from './index.js';

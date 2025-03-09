@@ -3,7 +3,6 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { Icon, icons } from '../icon/index.js';
 	import { Navigation } from '../navigation/index.js';
-	import './style.css';
 
 	type T = $$Generic;
 	let {

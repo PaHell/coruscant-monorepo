@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import './text.css';
 	import type { HTMLAttributes } from 'svelte/elements';
 	const {
 		small = false,

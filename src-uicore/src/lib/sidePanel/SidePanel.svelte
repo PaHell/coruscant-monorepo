@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import './style.css';
 	import { clickOutside } from '../utils/use.js';
 	import { Button } from '../button/index.js';
 	import { Heading } from '../text/index.js';

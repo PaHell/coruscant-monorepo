@@ -1,5 +1,5 @@
 .input {
-	@apply flex w-full items-center border-b border-black bg-interactive;
+	@apply flex w-full items-center border-b border-primary bg-interactive;
 
 	& > .icon {
 		@apply w-10;

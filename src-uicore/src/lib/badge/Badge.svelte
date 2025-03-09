@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
 	import { Text } from '../text/index.js';
-	import './style.css';
 	import { Button, type ButtonProperties } from '../button/index.js';
 
 	let {

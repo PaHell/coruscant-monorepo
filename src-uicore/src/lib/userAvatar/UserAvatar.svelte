@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Heading, Text } from '../text/index.js';
-	import './style.css';
 	import type { HTMLAttributes, HTMLBaseAttributes } from 'svelte/elements';
 
 	let {

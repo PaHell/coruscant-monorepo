@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { computePosition, autoPlacement } from '@floating-ui/dom';
-	import './style.css';
 	import debounce from '../utils/debounce.js';
 	import type { HTMLMenuAttributes } from 'svelte/elements';
 	import { Heading } from '../text/index.js';

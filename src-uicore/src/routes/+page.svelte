@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/button/Button.svelte';
 	import Heading from '$src/lib/text/Heading.svelte';
-	import { Popover } from '$src/lib/floating/index.js';
+	import { Floating } from '$src/lib/floating/index.js';
 	import type { Placement } from '@floating-ui/dom';
 
 	let placement: Placement = $state('bottom-start');
@@ -19,7 +19,7 @@
 
 <Button href="https://svelte.dev/docs/kit" label="Lorem" variant="primary" />
 
-<Popover {placement}>
+<Floating {placement}>
 	{#snippet trigger({ toggle })}
 		<Button
 			label={placement}
@@ -34,4 +34,4 @@
 	{#snippet menu()}
 		<Heading level={2}>Menu</Heading>
 	{/snippet}
-</Popover>
+</Floating>

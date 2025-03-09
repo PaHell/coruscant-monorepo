@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import { Button } from '../button/index.js';
 	import { type Snippet, setContext } from 'svelte';
 	import type { WizardStepProperties, WizardSteps, WizardStepsStore } from './index.js';

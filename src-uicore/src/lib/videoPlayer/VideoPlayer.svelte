@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Text } from '../text/index.js';
 	import { icons } from '../icon/index.js';
-	import './style.css';
 	import type { HTMLTrackAttributes, HTMLVideoAttributes } from 'svelte/elements';
 	import { Button } from '../button/index.js';
 

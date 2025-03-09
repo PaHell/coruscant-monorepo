@@ -3,7 +3,6 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { Icon, icons } from '../icon/index.js';
 	import Navigation from './Navigation.svelte';
-	import './TabNavigation.css';
 
 	type SideNavigationItem = {
 		icon: string;

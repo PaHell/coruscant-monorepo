@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 	import Icon from '$lib/icon/Icon.svelte';
 	import type { ButtonProperties } from './index.js';

@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLInputAttributes, HTMLTextareaAttributes } from 'svelte/elements';
-	import './input.css';
-	import '../text/text.css';
 	import Icon from '../icon/Icon.svelte';
 
 	type T = $$Generic;

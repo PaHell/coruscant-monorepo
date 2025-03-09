@@ -9,7 +9,6 @@
 		type Platform,
 		type Strategy
 	} from '@floating-ui/dom';
-	import './style.css';
 	import debounce from '../utils/debounce.js';
 	import { clickOutside } from '../utils/use.js';
 	import type { HTMLAttributes } from 'svelte/elements';

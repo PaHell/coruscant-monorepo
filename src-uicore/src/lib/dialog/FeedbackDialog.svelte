@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './feedbackDialog.css';
 	import { Modal } from '../modal/index.js';
 	import { Button } from '../button/index.js';
 	import type { FeedbackModel } from './index.js';

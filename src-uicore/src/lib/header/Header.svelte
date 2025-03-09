@@ -2,7 +2,6 @@
 	import { Heading } from '../text/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { Button } from '../button/index.js';
-	import './style.css';
 	import { UserAvatar } from '../userAvatar/index.js';
 	import { Navigation } from '../navigation/index.js';
 

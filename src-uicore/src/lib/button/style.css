@@ -1,5 +1,5 @@
 .button {
-	@apply box-border flex items-center space-x-1 overflow-hidden border border-transparent p-3 text-sm font-bold leading-6;
+	@apply box-border flex items-center space-x-1 overflow-hidden border border-transparent p-3 text-sm leading-6 font-bold;
 	padding: calc(0.75rem - 1px);
 
 	& > .icon {
@@ -54,7 +54,7 @@
 		}
 	}
 	&.button-variant-form {
-		@apply border-x-0 border-b-black bg-interactive;
+		@apply border-b-primary bg-interactive border-x-0;
 		&:hover {
 			@apply bg-interactive-hover;
 		}

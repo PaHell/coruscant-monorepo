@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { ProgressBar } from '../progressBar/index.js';
 

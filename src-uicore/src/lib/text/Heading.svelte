@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import './heading.css';
 	import type { HTMLAttributes } from 'svelte/elements';
 	const {
 		level = 1,

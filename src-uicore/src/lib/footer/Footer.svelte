@@ -2,7 +2,6 @@
 	import { Text } from '../text/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { Button } from '../button/index.js';
-	import './style.css';
 
 	let {
 		copyright,

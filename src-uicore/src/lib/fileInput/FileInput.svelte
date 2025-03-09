@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLInputAttributes, HTMLTextareaAttributes } from 'svelte/elements';
-	import './input.css';
-	import '../text/text.css';
 	import Icon from '../icon/Icon.svelte';
 	import { icons } from '../icon/index.js';
 	import { Text } from '../text/index.js';

@@ -2,7 +2,6 @@
 	import { type Snippet } from 'svelte';
 	import { Heading } from '../text/index.js';
 	import { Icon, icons } from '../icon/index.js';
-	import './style.css';
 	import type { HTMLAttributes, HTMLBaseAttributes } from 'svelte/elements';
 	import { Button } from '../button/index.js';
 

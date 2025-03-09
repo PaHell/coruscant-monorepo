@@ -46,12 +46,12 @@
 			/>
 		{/snippet}
 		{#snippet columns(table)}
-			<Column {table} key="id" title="ID" width="1fr">
+			<Column {table} key="id" title="ID" width="1fr" cell={{ class: 'text-end' }}>
 				{#snippet children({ data })}
 					<Text>{data.id}</Text>
 				{/snippet}
 			</Column>
-			<Column {table} key="name" title="Name" width="2fr" cell={{ class: 'bg-danger' }}>
+			<Column {table} key="name" title="Name" width="2fr">
 				{#snippet children({ data, updateProperty })}
 					<Input
 						value={data.name}
