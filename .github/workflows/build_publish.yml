@@ -33,13 +33,14 @@ jobs:
       - name: Get version
         id: get_version
         run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
-      - name: Delete package version
-        uses: actions/delete-package-versions@v5
+      - name: Delete previous package with same version
+        uses: paulushcgcj/delete-github-package@v1.0.0
         with:
-          package-version-ids: ${{ steps.get_version.outputs.version }}
-          package-name: coruscant-uicore
-          package-type: npm
           token: ${{ secrets.GITHUB_TOKEN }}
+          type: npm
+          name: coruscant-uicore
+          version: ${{ steps.get_version.outputs.version }}
+          user: ${{ github.repository_owner }}
       - name: Publish package
         run: npm publish
         env:
