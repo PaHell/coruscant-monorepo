@@ -4,9 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches:
+      - develop
       - master
   pull_request:
     branches:
+      - develop
       - master
 
 jobs:
@@ -28,6 +30,16 @@ jobs:
       - run: npm ci
       - name: Build package
         run: npm run build
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=version::$(node -p "require('./package.json').version")
+      - name: Delete package version
+        uses: actions/delete-package-versions@v5
+        with:
+          package-version-ids: ${{ steps.get_version.outputs.version }}
+          package-name: coruscant-uicore
+          package-type: npm
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish package
         run: npm publish
         env:
