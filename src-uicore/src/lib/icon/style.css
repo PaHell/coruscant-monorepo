@@ -1,8 +1,0 @@
-.icon {
-	@apply text-center text-[1.5rem] !leading-[1.5rem];
-	font-weight: normal;
-
-	&.icon-large {
-		@apply text-[1.5rem];
-	}
-}

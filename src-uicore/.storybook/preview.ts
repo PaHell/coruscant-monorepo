@@ -1,6 +1,7 @@
 import type { Preview, SvelteRenderer } from '@storybook/svelte';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import '../src/app.css';
+import 'remixicon/fonts/remixicon.css';
 
 const preview: Preview = {
   parameters: {

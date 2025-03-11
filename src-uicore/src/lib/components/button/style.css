@@ -1,0 +1,143 @@
+.button {
+	@apply flex cursor-pointer items-center space-x-1 rounded-sm transition-all duration-100;
+
+	&.button-size-sm {
+		@apply h-8 p-1.5 text-sm font-semibold;
+	}
+	&.button-size-md {
+		@apply h-9 p-2 text-sm font-semibold;
+	}
+	&.button-size-lg {
+		@apply h-11 p-2.5 text-base font-semibold;
+	}
+
+	&.button-rounded {
+		@apply rounded-full;
+	}
+
+	& > *:first-child:not(:last-child) {
+		@apply ms-1;
+	}
+	& > *:last-child:not(:first-child) {
+		@apply me-1;
+	}
+
+	& > .icon {
+		@apply w-6;
+	}
+	& > *:not(.icon) {
+		@apply truncate;
+	}
+	&.button-variant-primary,
+	&.button-variant-secondary,
+	&.button-variant-warning,
+	&.button-variant-danger {
+		@apply shadow-xs;
+		&:active,
+		&:focus-visible {
+			@apply outline-accent-border outline-2 outline-offset-2;
+		}
+	}
+	&.button-variant-warning {
+		&:active,
+		&:focus-visible {
+			@apply outline-warning-border;
+		}
+	}
+	&.button-variant-danger {
+		&:active,
+		&:focus-visible {
+			@apply outline-danger-border;
+		}
+	}
+	&.button-variant-secondary {
+		@apply text-primary dark:bg-interactive bg-white ring ring-gray-300 dark:ring-gray-700;
+		& > .icon {
+			@apply text-secondary;
+		}
+		&:hover,
+		&:active {
+			& > .icon {
+				@apply text-primary;
+			}
+		}
+		&:hover {
+			@apply dark:bg-interactive-hover bg-gray-50;
+		}
+		&:active {
+			@apply dark:bg-interactive-active bg-gray-200 ring-gray-400 dark:ring-gray-500;
+		}
+	}
+	&.button-variant-soft {
+		@apply bg-accent-muted dark:bg-accent/20 text-accent-foreground;
+		&:hover {
+			@apply bg-accent-muted-hover dark:bg-accent/30;
+		}
+		&:active {
+			@apply bg-accent-muted-active dark:bg-accent/40;
+		}
+	}
+	&.button-variant-primary {
+		@apply bg-accent ring-accent-border text-white ring;
+		&:hover {
+			@apply bg-accent/90;
+		}
+		&:active {
+			@apply bg-accent/80;
+		}
+	}
+	&.button-variant-warning {
+		@apply bg-warning text-black;
+		&:hover {
+			@apply bg-warning/90;
+		}
+		&:active {
+			@apply bg-warning/80;
+		}
+	}
+	&.button-variant-danger {
+		@apply bg-danger text-white;
+		&:hover {
+			@apply bg-danger/90;
+		}
+		&:active {
+			@apply bg-danger/80;
+		}
+	}
+	&.button-variant-integrated {
+		@apply dark:bg-interactive bg-transparent;
+		&:hover {
+			@apply bg-interactive-hover;
+		}
+		&:active {
+			@apply bg-interactive-active;
+		}
+	}
+	&.button-variant-link {
+		@apply text-accent;
+		&:hover {
+			@apply text-accent-foreground underline;
+		}
+	}
+}
+
+.button-group {
+	@apply dark:bg-interactive flex items-center space-x-px rounded bg-white shadow-xs ring ring-gray-300 dark:ring-gray-700;
+	& > .button {
+		@apply !shadow-none;
+		&:not(:first-child) {
+			@apply rounded-s-none;
+		}
+		&:not(:last-child) {
+			@apply rounded-e-none;
+		}
+		&:hover,
+		&:active,
+		&:focus-visible {
+			@apply relative;
+		}
+	}
+	& > .text {
+		@apply px-4;
+	}
+}

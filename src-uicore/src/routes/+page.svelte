@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Heading, Floating } from '$lib/index.js';
+	import { Button, Heading, Floating, icons } from '$lib/index.js';
 	import type { Placement } from '@floating-ui/dom';
 
 	let placement: Placement = $state('bottom-start');
@@ -18,14 +18,15 @@
 <Button href="https://svelte.dev/docs/kit" label="Lorem" variant="primary" />
 
 <Floating {placement}>
-	{#snippet trigger({ toggle })}
+	{#snippet trigger({ open })}
 		<Button
+			icon={icons.controls.add}
 			label={placement}
-			class="mx-auto my-24 w-32"
+			class="m-48"
 			onclick={(evt) => {
 				evt.preventDefault();
 				randomPlacement();
-				toggle();
+				open();
 			}}
 		/>
 	{/snippet}

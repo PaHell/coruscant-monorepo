@@ -1,7 +1,3 @@
-import debounce from "./debounce.js";
-import searchByKeys from "./search.js";
-
-export default {
-      debounce,
-      searchByKeys
-}
+export * from "./debounce.js";
+export * from "./search.js";
+export * from "./use.js";
