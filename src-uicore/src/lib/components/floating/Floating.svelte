@@ -46,10 +46,9 @@
 	let refMenu: HTMLMenuElement | undefined = $state(undefined);
 	let menuStyle = $state('');
 
+	const debouncedCalculate = debounce(calculate, 100);
 	onMount(calculate);
 	$effect(calculate);
-
-	const debouncedCalculate = debounce(calculate, 100);
 
 	function calculate() {
 		if (!refContainer || !refMenu || hidden) return;
@@ -63,8 +62,7 @@
 		computePosition(trigger, refMenu, {
 			placement,
 			strategy: strategy ?? 'absolute',
-			middleware: [flip()],
-			platform
+			middleware: [flip()]
 		}).then((res) => {
 			menuStyle += `
 				top: ${res.y}px;
@@ -84,7 +82,7 @@
 
 <svelte:window on:resize={debouncedCalculate} on:scroll={debouncedCalculate} />
 
-<div bind:this={refContainer} class="floating {others.class}" {...others}>
+<div bind:this={refContainer} {...others} class="floating {others.class}">
 	{@render trigger({
 		open: () => setHidden(false),
 		close: () => setHidden(true),

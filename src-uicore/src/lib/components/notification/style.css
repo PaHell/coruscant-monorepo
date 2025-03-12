@@ -1,10 +1,10 @@
 .notification-renderer {
 	@apply fixed bottom-0 left-0 flex h-full w-full justify-center;
-	> div {
+	& > div {
 		@apply border-border bg-foreground min-w-96 overflow-hidden border shadow-lg;
-		> .notification {
+		& > .notification {
 			@apply flex items-center;
-			> div {
+			& > div {
 				@apply flex flex-1 flex-col items-center;
 			}
 			&:not(:last-child) {

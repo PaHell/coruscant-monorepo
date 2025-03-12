@@ -1,29 +1,29 @@
 .user-avatar {
 	@apply flex items-center justify-center;
-	> div {
+	& > div {
 		@apply flex items-center justify-center rounded-full;
-		> .text {
+		& > .text {
 			@apply text-white;
 		}
-		> img {
+		& > img {
 			@apply min-h-full min-w-full;
 		}
 	}
-	> .text {
+	& > .text {
 		@apply ms-2;
 	}
 	&.user-avatar-small {
-		> div {
+		& > div {
 			@apply h-8 w-8;
 		}
 	}
 	&.user-avatar-medium {
-		> div {
+		& > div {
 			@apply h-12 w-12;
 		}
 	}
 	&.user-avatar-large {
-		> div {
+		& > div {
 			@apply h-16 w-16;
 		}
 	}

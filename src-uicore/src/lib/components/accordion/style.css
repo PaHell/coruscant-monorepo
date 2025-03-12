@@ -1,7 +1,7 @@
 .alert {
 	@apply bg-interactive p-2;
-	> .icon,
-	> .text {
+	& > .icon,
+	& > .text {
 		@apply text-inherit;
 	}
 	&.alert-variant-accent {

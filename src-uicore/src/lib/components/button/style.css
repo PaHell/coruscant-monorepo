@@ -1,30 +1,37 @@
 .button {
-	@apply flex cursor-pointer items-center space-x-1 rounded-sm transition-all duration-100;
+	@apply flex cursor-pointer items-center rounded-sm border shadow-xs transition-all duration-100;
 
 	&.button-size-sm {
-		@apply h-8 p-1.5 text-sm font-semibold;
+		@apply h-8 px-1.5 text-sm font-semibold;
 	}
 	&.button-size-md {
-		@apply h-9 p-2 text-sm font-semibold;
+		@apply h-9 px-2 text-sm font-semibold;
 	}
 	&.button-size-lg {
-		@apply h-11 p-2.5 text-base font-semibold;
+		@apply h-11 px-2.5 text-base font-semibold;
 	}
 
 	&.button-rounded {
 		@apply rounded-full;
 	}
 
-	& > *:first-child:not(:last-child) {
-		@apply ms-1;
+	& > .icon {
+		&:not(:first-child) {
+			@apply ms-1;
+		}
+		&:not(:last-child) {
+			@apply me-1;
+		}
 	}
-	& > *:last-child:not(:first-child) {
-		@apply me-1;
+	& > span {
+		&:first-child {
+			@apply ms-1;
+		}
+		&:last-child {
+			@apply me-1;
+		}
 	}
 
-	& > .icon {
-		@apply w-6;
-	}
 	& > *:not(.icon) {
 		@apply truncate;
 	}
@@ -35,23 +42,23 @@
 		@apply shadow-xs;
 		&:active,
 		&:focus-visible {
-			@apply outline-accent-border outline-2 outline-offset-2;
+			@apply border-accent-border;
 		}
 	}
 	&.button-variant-warning {
 		&:active,
 		&:focus-visible {
-			@apply outline-warning-border;
+			@apply border-warning-border;
 		}
 	}
 	&.button-variant-danger {
 		&:active,
 		&:focus-visible {
-			@apply outline-danger-border;
+			@apply border-danger-border;
 		}
 	}
 	&.button-variant-secondary {
-		@apply text-primary dark:bg-interactive bg-white ring ring-gray-300 dark:ring-gray-700;
+		@apply text-primary dark:bg-interactive border-gray-300 bg-white dark:border-gray-700;
 		& > .icon {
 			@apply text-secondary;
 		}
@@ -65,11 +72,11 @@
 			@apply dark:bg-interactive-hover bg-gray-50;
 		}
 		&:active {
-			@apply dark:bg-interactive-active bg-gray-200 ring-gray-400 dark:ring-gray-500;
+			@apply dark:bg-interactive-active border-gray-400 bg-gray-200 dark:border-gray-500;
 		}
 	}
 	&.button-variant-soft {
-		@apply bg-accent-muted dark:bg-accent/20 text-accent-foreground;
+		@apply bg-accent-muted dark:bg-accent/20 text-accent-foreground border-transparent shadow-none;
 		&:hover {
 			@apply bg-accent-muted-hover dark:bg-accent/30;
 		}
@@ -78,7 +85,7 @@
 		}
 	}
 	&.button-variant-primary {
-		@apply bg-accent ring-accent-border text-white ring;
+		@apply bg-accent border-accent-border text-white;
 		&:hover {
 			@apply bg-accent/90;
 		}
@@ -87,7 +94,7 @@
 		}
 	}
 	&.button-variant-warning {
-		@apply bg-warning text-black;
+		@apply bg-warning border-warning-border text-black;
 		&:hover {
 			@apply bg-warning/90;
 		}
@@ -96,7 +103,7 @@
 		}
 	}
 	&.button-variant-danger {
-		@apply bg-danger text-white;
+		@apply bg-danger border-danger-border text-white;
 		&:hover {
 			@apply bg-danger/90;
 		}
@@ -105,7 +112,7 @@
 		}
 	}
 	&.button-variant-integrated {
-		@apply dark:bg-interactive bg-transparent;
+		@apply dark:bg-interactive border-transparent bg-transparent shadow-none;
 		&:hover {
 			@apply bg-interactive-hover;
 		}
@@ -114,7 +121,7 @@
 		}
 	}
 	&.button-variant-link {
-		@apply text-accent;
+		@apply text-accent border-transparent shadow-none;
 		&:hover {
 			@apply text-accent-foreground underline;
 		}
@@ -122,11 +129,17 @@
 }
 
 .button-group {
-	@apply dark:bg-interactive flex items-center space-x-px rounded bg-white shadow-xs ring ring-gray-300 dark:ring-gray-700;
+	@apply dark:bg-interactive flex items-center rounded border border-gray-300 bg-white shadow-xs dark:border-gray-700;
 	& > .button {
-		@apply !shadow-none;
+		@apply -my-px !shadow-none;
+		&:first-child {
+			@apply -ms-px;
+		}
+		&:last-child {
+			@apply -me-px;
+		}
 		&:not(:first-child) {
-			@apply rounded-s-none;
+			@apply -ms-px rounded-s-none;
 		}
 		&:not(:last-child) {
 			@apply rounded-e-none;
