@@ -13,7 +13,7 @@
 	});
 
 	let simpleItems: string[] = $state(['Apple', 'Banana', 'Cherry']);
-	let simpleValue: string | undefined = $state(undefined);
+	let simpleValue: string | null = $state(null);
 
 	let enumValue = $state(OperatingSystem.MacOs);
 

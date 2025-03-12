@@ -27,7 +27,7 @@
 		{@render children()}
 	{:else}
 		{#if icon}
-			<Icon name={icon} />
+			<Icon name={icon} {size} />
 		{/if}
 		{#if !hideLabel}
 			<span>{label}</span>

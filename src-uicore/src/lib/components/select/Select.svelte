@@ -53,7 +53,7 @@
 <Floating placement="bottom-start" strategy="fixed" class="select-menu">
 	{#snippet trigger({ toggle })}
 		<Button
-			variant="form"
+			variant="secondary"
 			label={value ? getDisplayValue(value) : placeholder}
 			onclick={toggle}
 			class="select-button"
@@ -75,20 +75,32 @@
 				class="w-full !rounded-none"
 			/>
 		{/if}
-		{#each items as _item, i (i)}
-			<Button
-				variant="integrated"
-				label={getDisplayValue(_item)}
-				onclick={() => setValue(_item)}
-				class="w-full !rounded-none"
-				active={(value && getKey(value)) == getKey(_item)}
-			>
-				{@render item?.({
-					item: _item,
-					index: i,
-					active: (value && getKey(value)) == getKey(_item)
-				})}
-			</Button>
-		{/each}
+		{#if item}
+			{#each items as _item, i (i)}
+				<Button
+					variant="integrated"
+					label={getDisplayValue(_item)}
+					onclick={() => setValue(_item)}
+					class="w-full !rounded-none"
+					active={(value && getKey(value)) == getKey(_item)}
+				>
+					{@render item?.({
+						item: _item,
+						index: i,
+						active: (value && getKey(value)) == getKey(_item)
+					})}
+				</Button>
+			{/each}
+		{:else}
+			{#each items as _item, i (i)}
+				<Button
+					variant="integrated"
+					label={getDisplayValue(_item)}
+					onclick={() => setValue(_item)}
+					class="w-full !rounded-none"
+					active={(value && getKey(value)) == getKey(_item)}
+				/>
+			{/each}
+		{/if}
 	{/snippet}
 </Floating>

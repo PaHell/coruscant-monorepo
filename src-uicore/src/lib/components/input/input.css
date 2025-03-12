@@ -1,53 +1,54 @@
 .input {
-	@apply border-primary bg-interactive flex w-full items-center border-b;
+	@apply dark:bg-interactive flex w-full items-center rounded-sm border border-gray-300 bg-gray-50 shadow-xs transition-all dark:border-gray-700;
 
-	> .icon {
+	& > .icon {
 		@apply w-10;
 	}
 
-	> div {
+	& > div {
 		@apply flex flex-1 flex-col;
-		> label {
-			@apply mt-0.5 mb-[-1.125rem] h-4 px-2 !leading-[1.1rem];
+		& > label {
+			@apply mt-1 h-4 px-2 !leading-[1.1rem];
 		}
-		> input {
-			@apply h-12;
+		& > input {
 			height: calc(3rem - 2px);
 		}
-		> textarea {
+		& > textarea {
 			@apply h-20 min-h-12;
 		}
-		> input,
-		> textarea {
-			@apply text-primary placeholder:text-secondary border-0 !bg-transparent !px-2 !pt-2.5 text-base !leading-none font-normal !ring-0 placeholder:font-light;
+		& > input,
+		& > textarea {
+			@apply text-primary placeholder:text-secondary border-0 !bg-transparent px-2 text-base !leading-none font-normal !ring-0 !outline-0 placeholder:font-light;
 		}
-		> label + input,
-		> label + textarea {
-			@apply !pt-5;
+		& > label + input {
+			@apply -mt-4 pt-3;
+		}
+		& > label + textarea {
+			@apply -mt-4 pt-5;
 		}
 	}
 
-	> .icon + div {
-		> label,
-		> input,
-		> textarea {
+	& > .icon + div {
+		& > label,
+		& > input,
+		& > textarea {
 			@apply !ps-0;
 		}
 	}
 
 	&:hover {
-		@apply bg-interactive-hover;
+		@apply bg-foreground;
 	}
 
-	&:focus-within {
-		@apply border-accent bg-accent-foreground;
-		> .icon {
+	&:focus-within,
+	&:focus-visible {
+		@apply bg-foreground ring-accent-border ring-offset-background ring-2 ring-offset-2;
+		& > .icon {
 			@apply text-accent;
 		}
-		> div {
-			> input,
-			> textarea {
-				@apply placeholder:text-accent/50;
+		& > div {
+			& > input,
+			& > textarea {
 			}
 		}
 	}

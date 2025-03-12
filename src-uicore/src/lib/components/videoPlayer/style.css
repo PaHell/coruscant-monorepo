@@ -1,15 +1,15 @@
 .video-player {
 	@apply aspect-video;
-	> .video-player-placeholder {
+	& > .video-player-placeholder {
 		@apply flex h-full w-full items-center justify-center;
-		> img {
+		& > img {
 			@apply object-cover;
 		}
-		> .button {
+		& > .button {
 			@apply absolute;
 		}
 	}
-	> video {
+	& > video {
 		@apply h-full w-full;
 	}
 }

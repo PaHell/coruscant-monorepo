@@ -1,19 +1,19 @@
 .splash-screen {
 	@apply bg-primary fixed top-0 left-0 flex h-full w-full items-center justify-center;
 
-	> div {
+	& > div {
 		@apply w-96;
 
-		> main {
+		& > main {
 			@apply bg-accent flex w-full flex-col items-center justify-center;
-			> img {
+			& > img {
 				@apply mb-6 h-16 w-16;
 			}
-			> .text {
+			& > .text {
 				@apply text-white;
 			}
 		}
-		> footer {
+		& > footer {
 			@apply bg-foreground flex h-12 w-full items-center justify-between px-6;
 		}
 	}

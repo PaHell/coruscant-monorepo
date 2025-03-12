@@ -1,5 +1,17 @@
 .floating {
-	> menu {
-		@apply border-border bg-foreground absolute top-0 left-0 w-[max-content] overflow-hidden border p-4 shadow-lg;
+	& > menu {
+		@apply border-border bg-foreground absolute top-0 left-0 w-[max-content] overflow-hidden rounded-sm border shadow-lg;
+		&.floating-menu[class*='floating-menu-top'] {
+			@apply -mt-px;
+		}
+		&.floating-menu[class*='floating-menu-bottom'] {
+			@apply mt-px;
+		}
+		&.floating-menu[class*='floating-menu-left'] {
+			@apply -ms-px;
+		}
+		&.floating-menu[class*='floating-menu-right'] {
+			@apply ms-px;
+		}
 	}
 }

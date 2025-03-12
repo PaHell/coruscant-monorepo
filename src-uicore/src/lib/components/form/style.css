@@ -1,12 +1,12 @@
 .form {
 	@apply flex flex-col space-y-4;
-	> .form-errors {
+	& > .form-errors {
 		@apply space-y-4 p-4;
 	}
-	> .form-content {
+	& > .form-content {
 		@apply flex flex-col space-y-4 p-4;
 	}
-	> .form-actions {
+	& > .form-actions {
 		@apply flex items-center space-x-4 p-4;
 	}
 }
