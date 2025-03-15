@@ -1,25 +1,34 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLInputAttributes, HTMLTextareaAttributes } from 'svelte/elements';
-	import { Icon } from '$lib/index.js';
+	import { Icon, icons } from '$lib/index.js';
+	import Text from '../text/Text.svelte';
 
 	type T = $$Generic;
 	let {
 		id = Math.random().toString(36).substring(7),
 		value = $bindable(''),
 		label,
+		prefix,
+		suffix,
 		icon,
+		size = 'md',
 		isTextarea = false,
 		onchange,
 		oninput,
-		children,
+		before,
+		after,
 		...others
 	}: HTMLInputAttributes &
 		HTMLTextareaAttributes & {
 			label?: string;
+			prefix?: string;
+			suffix?: string;
 			icon?: string;
+			size?: 'sm' | 'md' | 'lg';
 			isTextarea?: boolean;
-			children?: Snippet<[]>;
+			before?: Snippet<[]>;
+			after?: Snippet<[]>;
 		} = $props();
 
 	function input(event: Event) {
@@ -35,9 +44,10 @@
 	}
 </script>
 
-<div class="input {others.class}">
+<div class="input input-size-{size} {others.class}">
+	{@render before?.()}
 	{#if icon}
-		<Icon name={icon} />
+		<Icon name={icon} {size} />
 	{/if}
 	<div>
 		{#if label}
@@ -48,14 +58,22 @@
 				{/if}
 			</label>
 		{/if}
-		<svelte:element
-			this={isTextarea ? 'textarea' : 'input'}
-			{id}
-			{value}
-			oninput={input}
-			onchange={change}
-			{...others}
-		></svelte:element>
+		<div>
+			{#if prefix}
+				<Text>{prefix}</Text>
+			{/if}
+			<svelte:element
+				this={isTextarea ? 'textarea' : 'input'}
+				{id}
+				{value}
+				oninput={input}
+				onchange={change}
+				{...others}
+			></svelte:element>
+			{#if suffix}
+				<Text>{suffix}</Text>
+			{/if}
+		</div>
 	</div>
-	{@render children?.()}
+	{@render after?.()}
 </div>

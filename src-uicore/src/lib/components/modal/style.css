@@ -1,7 +1,7 @@
 .modal {
 	@apply fixed top-0 left-0 flex h-full w-full items-center justify-center overflow-hidden bg-black/20;
 	& > menu {
-		@apply border-border bg-foreground min-w-96 overflow-hidden border shadow-lg;
+		@apply border-border bg-foreground min-w-96 overflow-hidden rounded-sm border shadow-lg;
 		& > header {
 			@apply flex items-center;
 			& > .text {

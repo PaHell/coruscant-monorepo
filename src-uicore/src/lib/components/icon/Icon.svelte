@@ -11,4 +11,4 @@
 	} = $props();
 </script>
 
-<i class="icon icon-size-{size} ri-{name} {others.class}" {...others}></i>
+<i {...others} class="icon icon-size-{size} ri-{name} {others.class}"></i>

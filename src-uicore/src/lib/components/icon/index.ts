@@ -10,5 +10,8 @@ export const icons = {
             dropdown: 'arrow-down-s-line',
             checkmark: 'check-line',
             send: 'send-plane-2-line',
+      },
+      validation: {
+            error: 'error-warning-fill',
       }
 };

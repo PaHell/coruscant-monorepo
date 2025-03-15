@@ -3,9 +3,12 @@
 	font-weight: normal;
 
 	&.icon-size-sm {
-		@apply text-[1rem];
+		@apply text-[1.125rem];
+	}
+	&.icon-size-md {
+		@apply text-[1.5rem];
 	}
 	&.icon-size-lg {
-		@apply text-[1.25rem];
+		@apply text-[1.75rem];
 	}
 }
