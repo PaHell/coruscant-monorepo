@@ -99,7 +99,12 @@
 					onclick={() => setValue(_item)}
 					class="w-full !rounded-none"
 					active={(value && getKey(value)) == getKey(_item)}
-				/>
+				>
+					<span class="flex-1 text-left">{getDisplayValue(_item)}</span>
+					{#if (value && getKey(value)) == getKey(_item)}
+						<Icon name={icons.controls.checkmark} />
+					{/if}
+				</Button>
 			{/each}
 		{/if}
 	{/snippet}

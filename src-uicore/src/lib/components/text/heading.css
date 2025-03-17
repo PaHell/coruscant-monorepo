@@ -1,21 +1,27 @@
 .text.heading {
 	@apply text-primary;
-	&h1 {
-		@apply text-4xl;
-	}
-	&h2 {
-		@apply text-3xl font-bold;
-	}
-	&h3 {
-		@apply text-2xl;
-	}
-	&h4 {
-		@apply text-xl font-bold;
-	}
-	&h5 {
-		@apply text-lg;
-	}
-	&h6 {
-		@apply text-base font-bold tracking-wide uppercase;
-	}
+}
+h1,
+.text.heading.heading-1 {
+	@apply !text-4xl;
+}
+h2,
+.text.heading.heading-2 {
+	@apply !text-3xl font-bold;
+}
+h3,
+.text.heading.heading-3 {
+	@apply !text-2xl;
+}
+h4,
+.text.heading.heading-4 {
+	@apply !text-xl font-bold;
+}
+h5,
+.text.heading.heading-5 {
+	@apply !text-lg;
+}
+h6,
+.text.heading.heading-6 {
+	@apply !text-base font-bold tracking-wide uppercase;
 }

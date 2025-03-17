@@ -1,51 +1,79 @@
 <script lang="ts">
-	import { Button } from '$lib/index.js';
+	import { Button, Text } from '$lib/index.js';
+	import type { Snippet } from 'svelte';
 
 	type T = $$Generic;
-	type TKey = $$Generic;
+	type TValue = $$Generic;
 	let {
+		title,
+		subtitle,
+		formName,
+		variant = 'vertical',
 		items = $bindable([]),
 		value = $bindable(undefined),
-		getKey = (item: T) => item as unknown as TKey,
-		getDisplayValue = (item: T) => item as unknown as string,
+		getValue = (item: T) => item as unknown as TValue,
 		textNone = 'None',
 		allowNone = false,
-		onchange
+		onchange,
+		children
 	}: {
+		title: string;
+		subtitle?: string;
+		formName: string;
+		variant?: 'vertical' | 'horizontal' | 'sections' | 'cards' | 'buttons' | 'stacked-cards';
 		items: T[];
-		value: T | undefined;
-		getKey?: (item: T) => TKey;
-		getDisplayValue: (item: T) => string;
+		value: TValue | undefined;
+		getValue?: (item: T) => TValue;
 		textNone?: string;
 		allowNone?: boolean;
 		onchange?: (item: T | undefined, index: number) => unknown;
+		children?: Snippet<[T]>;
 	} = $props();
 
 	$effect(internalOnChange);
 
 	function setValue(newValue?: T) {
-		value = newValue;
+		value = newValue ? getValue(newValue) : undefined;
 		console.log({ value });
 		internalOnChange();
 	}
 
 	function internalOnChange() {
-		const key = value ? getKey(value) : undefined;
-		const index = items.findIndex((item) => getKey(item) === key);
-		onchange?.(value, index);
+		const index = items.findIndex((item) => getValue(item) === value);
+		onchange?.(items[index], index);
 	}
 </script>
 
-<div class="radio-buttons">
-	{#if allowNone}
-		<Button variant="integrated" label={textNone} onclick={() => setValue()} />
+<fieldset class="radio-buttons radio-buttons-variant-{variant}">
+	<legend>{title}</legend>
+	{#if subtitle}
+		<Text small secondary>{subtitle}</Text>
 	{/if}
-	{#each items as item, i (i)}
-		<Button
-			variant="integrated"
-			label={getDisplayValue(item)}
-			onclick={() => setValue(item)}
-			active={(value && getKey(value)) == getKey(item)}
-		/>
-	{/each}
-</div>
+	<div>
+		{#if allowNone}
+			<div>
+				<input id="{formName}-item-none" name={formName} type="radio" checked={!value} />
+				<label for="{formName}-item-none">{textNone}</label>
+			</div>
+		{/if}
+		{#each items as item, i (i)}
+			<div>
+				<input
+					id="{formName}-item-{getValue(item)}"
+					name={formName}
+					type="radio"
+					value={getValue(item)}
+					checked={value === getValue(item)}
+					onchange={() => setValue(item)}
+				/>
+				<label for="{formName}-item-{getValue(item)}">
+					{#if children}
+						{@render children(item)}
+					{:else}
+						{item}
+					{/if}
+				</label>
+			</div>
+		{/each}
+	</div>
+</fieldset>

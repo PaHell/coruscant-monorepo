@@ -6,6 +6,7 @@ export * from './components/breadcrumbs/index.js';
 export * from './components/button/index.js';
 export * from './components/chat/index.js';
 export * from './components/checkbox/index.js';
+export * from './components/commentTextarea/index.js';
 export * from './components/contextMenu/index.js';
 export * from './components/datePicker/index.js';
 export * from './components/dialog/index.js';

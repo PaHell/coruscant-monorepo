@@ -61,7 +61,7 @@
 		&:focus-visible,
 		&:focus-within,
 		&.button-active {
-			@apply ring-accent-border ring-offset-foreground ring-2 ring-offset-2;
+			@apply ring-accent-border ring-offset-foreground dark:ring-offset-background ring-2 ring-offset-2;
 		}
 	}
 	&.button-variant-secondary {
@@ -151,7 +151,7 @@
 		}
 	}
 	&.button-variant-link {
-		@apply text-accent relative border-transparent;
+		@apply text-accent-border relative border-transparent;
 		&:after {
 			@apply border-accent-border absolute left-0 h-0 w-full border-t-2 opacity-0 content-[''];
 		}
@@ -163,9 +163,6 @@
 		&.button-active:after {
 			@apply opacity-100;
 		}
-		&:hover {
-			@apply text-accent-foreground;
-		}
 	}
 	&:disabled {
 		@apply cursor-not-allowed;
@@ -176,8 +173,23 @@
 		&.button-variant-warning {
 			@apply opacity-50;
 		}
+		&.button-variant-secondary {
+			@apply !bg-interactive-hover text-secondary shadow-none;
+			& > .icon {
+				@apply text-inherit;
+			}
+		}
 		&.button-variant-soft {
 			@apply opacity-50;
+		}
+		&.button-variant-integrated {
+			@apply text-secondary bg-transparent;
+		}
+		&.button-variant-link {
+			@apply opacity-50;
+			&:after {
+				@apply opacity-100;
+			}
 		}
 	}
 }

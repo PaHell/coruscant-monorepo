@@ -5,6 +5,7 @@
 @import '../components/button/style.css';
 @import '../components/chat/style.css';
 @import '../components/checkbox/style.css';
+@import '../components/commentTextarea/style.css';
 @import '../components/contextMenu/style.css';
 @import '../components/datePicker/style.css';
 @import '../components/dialog/confirmationDialog.css';

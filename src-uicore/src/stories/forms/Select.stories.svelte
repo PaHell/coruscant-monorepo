@@ -1,18 +1,23 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { Select, SelectEnum, SelectId } from '$lib/index.js';
-	import { OperatingSystem } from './index.js';
+	import { OperatingSystem } from '../index.js';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
-		title: 'Atoms/Select',
+		title: 'Forms/Select',
 		component: Select,
 		tags: ['autodocs'],
 		argTypes: {},
 		args: {}
 	});
 
-	let simpleItems: string[] = $state(['Apple', 'Banana', 'Cherry']);
+	let simpleItems: string[] = $state([
+		'Apple',
+		'Banana',
+		'Cherry',
+		'Maplenut Ice Cream Sandwich with Chocolate Chips'
+	]);
 	let simpleValue: string | null = $state(null);
 
 	let enumValue = $state(OperatingSystem.MacOs);

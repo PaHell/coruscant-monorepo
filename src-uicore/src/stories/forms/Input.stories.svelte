@@ -2,9 +2,20 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { icons, Input } from '$lib/index.js';
 
+	const args = {
+		label: 'Label',
+		placeholder: 'Placeholder',
+		error: '' as string | null,
+		icon: '' as string | null,
+		size: 'md' as 'sm' | 'md' | 'lg',
+		isTextarea: false,
+		required: false,
+		disabled: false
+	};
+
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-	const { Story, args } = defineMeta({
-		title: 'Atoms/Input',
+	const { Story } = defineMeta({
+		title: 'Forms/Input',
 		component: Input,
 		tags: ['autodocs'],
 		argTypes: {
@@ -17,16 +28,7 @@
 			required: { control: 'boolean' },
 			disabled: { control: 'boolean' }
 		},
-		args: {
-			label: 'Label',
-			placeholder: 'Placeholder',
-			error: '',
-			icon: '',
-			size: 'md',
-			isTextarea: false,
-			required: false,
-			disabled: false
-		}
+		args
 	});
 </script>
 

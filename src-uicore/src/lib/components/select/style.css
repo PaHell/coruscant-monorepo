@@ -1,6 +1,5 @@
-.select-button {
-	@apply !min-w-72;
-}
 .select-menu {
-	@apply overflow-auto;
+	& > menu > .button.button-variant-integrated.button-active {
+		@apply !bg-accent !text-white;
+	}
 }

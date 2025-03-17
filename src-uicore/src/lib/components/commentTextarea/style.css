@@ -1,0 +1,19 @@
+.comment-textarea {
+	@apply flex items-start;
+
+	& > .comment-textarea-content {
+		@apply flex-1;
+		& > .input {
+			@apply h-32;
+			& textarea {
+				@apply pb-13;
+			}
+		}
+		& > .comment-textarea-controls {
+			@apply relative flex items-center justify-between;
+			& > div {
+				@apply -mt-13 flex items-center p-2;
+			}
+		}
+	}
+}
