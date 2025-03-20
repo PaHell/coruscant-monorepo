@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button, Text } from '$lib/index.js';
-	import type { Snippet } from 'svelte';
+	import { Button, FormContextKey, Text, type FormContext } from '$lib/index.js';
+	import { getContext, type Snippet } from 'svelte';
 
 	type T = $$Generic;
 	type TValue = $$Generic;
@@ -32,10 +32,22 @@
 
 	$effect(internalOnChange);
 
+	const context = getContext<FormContext>(FormContextKey);
+
+	if (context) {
+		context.set(formName, {
+			value,
+			valid: true
+		});
+	}
+
 	function setValue(newValue?: T) {
 		value = newValue ? getValue(newValue) : undefined;
-		console.log({ value });
 		internalOnChange();
+		context?.set(formName, {
+			value,
+			valid: true
+		});
 	}
 
 	function internalOnChange() {
@@ -45,10 +57,12 @@
 </script>
 
 <fieldset class="radio-buttons radio-buttons-variant-{variant}">
-	<legend>{title}</legend>
-	{#if subtitle}
-		<Text small secondary>{subtitle}</Text>
-	{/if}
+	<div>
+		<legend>{title}</legend>
+		{#if subtitle}
+			<Text small secondary>{subtitle}</Text>
+		{/if}
+	</div>
 	<div>
 		{#if allowNone}
 			<div>
@@ -56,7 +70,7 @@
 				<label for="{formName}-item-none">{textNone}</label>
 			</div>
 		{/if}
-		{#each items as item, i (i)}
+		{#each items as item (getValue(item))}
 			<div>
 				<input
 					id="{formName}-item-{getValue(item)}"

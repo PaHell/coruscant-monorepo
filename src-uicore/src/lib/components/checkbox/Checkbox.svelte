@@ -1,35 +1,34 @@
 <script lang="ts">
-	import { Button } from '$lib/index.js';
-	import { Icon, icons } from '$lib/index.js';
+	import type { Snippet } from 'svelte';
 
 	let {
 		value = $bindable(false),
+		name,
 		label,
 		variant = 'default',
-		onchange
+		onchange,
+		children
 	}: {
 		value: boolean;
-		label: string;
+		name: string;
+		label?: string;
 		variant?: 'default' | 'toggle';
 		onchange?: (value: boolean) => unknown;
+		children?: Snippet<[]>;
 	} = $props();
-
-	function toggle() {
-		value = !value;
-		onchange?.(value);
-	}
 </script>
 
-<Button
-	variant="integrated"
-	{label}
-	onclick={toggle}
-	class="checkbox checkbox-variant-{variant} {value ? 'checkbox-checked' : ''}"
->
-	{#snippet children()}
-		<Icon name={icons.controls.checkmark} />
-		{#if label}
-			<span>{label}</span>
-		{/if}
-	{/snippet}
-</Button>
+<div class="checkbox checkbox-variant-{variant}">
+	<input
+		id="checkbox-{name}"
+		type="checkbox"
+		{name}
+		value={true}
+		bind:checked={value}
+		onchange={(e) => onchange?.(e.target?.value)}
+	/>
+	<label for="checkbox-{name}">
+		{label}
+		{@render children?.()}
+	</label>
+</div>

@@ -18,6 +18,7 @@
 			& > input,
 			& > textarea {
 				@apply text-primary placeholder:text-secondary h-full flex-1 border-0 !bg-transparent px-3 text-base font-normal !ring-0 !outline-0 placeholder:font-light;
+				border-radius: calc(0.25rem - 1px);
 			}
 			& > textarea {
 				@apply resize-none leading-snug;

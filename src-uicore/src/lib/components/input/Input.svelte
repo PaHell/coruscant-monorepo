@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import { getContext, type Snippet } from 'svelte';
 	import type { HTMLInputAttributes, HTMLTextareaAttributes } from 'svelte/elements';
-	import { Icon, icons } from '$lib/index.js';
+	import { type FormContext, FormContextKey, type FormField, Icon, icons } from '$lib/index.js';
 	import Text from '../text/Text.svelte';
 
 	type T = $$Generic;
 	let {
 		id = Math.random().toString(36).substring(7),
 		value = $bindable(''),
+		name = id,
 		label,
 		prefix,
 		suffix,
@@ -31,6 +32,15 @@
 			after?: Snippet<[]>;
 		} = $props();
 
+	const context = getContext<FormContext>(FormContextKey);
+
+	if (context) {
+		context.set(name!, {
+			value,
+			valid: true
+		} satisfies FormField);
+	}
+
 	function input(event: Event) {
 		const target = event.target as HTMLInputElement | HTMLTextAreaElement;
 		value = target.value;
@@ -41,6 +51,10 @@
 		const target = event.target as HTMLInputElement | HTMLTextAreaElement;
 		value = target.value;
 		onchange?.(event);
+		context?.set(name!, {
+			value,
+			valid: true
+		} satisfies FormField);
 	}
 </script>
 
@@ -65,6 +79,7 @@
 			<svelte:element
 				this={isTextarea ? 'textarea' : 'input'}
 				{id}
+				{name}
 				{value}
 				oninput={input}
 				onchange={change}

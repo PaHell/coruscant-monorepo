@@ -21,7 +21,6 @@
 	class="button button-size-{size} button-variant-{variant} {active
 		? 'button-active'
 		: ''} {others.class}"
-	type="button"
 >
 	{#if children}
 		{@render children()}
