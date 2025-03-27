@@ -1,6 +1,15 @@
 <script lang="ts" module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import { Form, Input, icons, Text, RadioButtons, Checkbox } from '$lib/index.js';
+	import {
+		Form,
+		Input,
+		icons,
+		Text,
+		RadioButtons,
+		Checkbox,
+		Select,
+		SelectId
+	} from '$lib/index.js';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -26,12 +35,28 @@
 		}
 	];
 
+	const countries = [
+		{
+			id: 'us',
+			label: 'United States'
+		},
+		{
+			id: 'ca',
+			label: 'Canada'
+		},
+		{
+			id: 'mx',
+			label: 'Mexico'
+		}
+	];
+
 	let form = $state({
 		name: '',
 		email: '',
 		gender: '',
 		password: '',
-		terms: false
+		terms: false,
+		country: ''
 	});
 
 	function onSubmit() {}
@@ -71,6 +96,12 @@
 				{item.label}
 			{/snippet}
 		</RadioButtons>
+		<SelectId
+			name="country"
+			items={countries}
+			getDisplayValue={(i) => i.label}
+			bind:value={form.country}
+		/>
 		<Checkbox name="terms" label="I agree to the terms and conditions" bind:value={form.terms} />
 	</Form>
 </Story>

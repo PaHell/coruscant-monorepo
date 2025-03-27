@@ -357,7 +357,9 @@ body > content {
 body {
 	@apply text-primary font-sans text-base;
 }
-body,
-.docs-story {
+body {
 	@apply bg-background;
+}
+.docs-story {
+	@apply bg-foreground;
 }

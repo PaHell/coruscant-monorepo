@@ -5,6 +5,7 @@
 	type TKey = $$Generic<string | number>;
 
 	let {
+		name,
 		items = $bindable([]),
 		value = $bindable(),
 		key = 'id' as keyof NonNullable<T>,
@@ -13,6 +14,7 @@
 		allowNone,
 		onchange
 	}: {
+		name?: string;
 		items: NonNullable<T>[];
 		value: NonNullable<T>[keyof NonNullable<T>] | null;
 		key?: keyof NonNullable<T>;
@@ -26,6 +28,7 @@
 </script>
 
 <Select
+	{name}
 	{items}
 	value={internalValue}
 	getKey={(i) => i[key]}

@@ -2,14 +2,20 @@
 	&.checkbox-variant-default {
 		@apply my-2 flex items-start;
 		& > input {
-			@apply size-0 appearance-none;
+			@apply size-0 appearance-none outline-0;
 			&:before {
 				content: '';
 				font-family: 'remixicon' !important;
 				font-smoothing: antialiased;
-				@apply bg-foreground border-border mt-0.5 block h-4 w-4 rounded border text-center text-white;
+				@apply bg-foreground border-border mt-0.5 block h-4 w-4 rounded border text-center text-white transition-all;
 				line-height: calc(1rem - 1px);
 				text-indent: -1px;
+			}
+			&:focus,
+			&:focus-visible {
+				&:before {
+					@apply ring-accent-border ring-offset-background ring-2 ring-offset-2;
+				}
 			}
 			&:checked:before {
 				content: '\eb7b';
@@ -34,6 +40,11 @@
 			&:after {
 				content: '';
 				@apply ms-1 -mt-5 block h-4 w-4 rounded-full bg-white transition-all dark:bg-gray-600;
+			}
+			&:focus {
+				&:before {
+					@apply ring-accent-border ring-offset-background ring-2 ring-offset-2;
+				}
 			}
 			&:checked {
 				&:before {

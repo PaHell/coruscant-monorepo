@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { Button } from '$lib/index.js';
+	import { Button, FormContextKey, type FormContext } from '$lib/index.js';
 	import { Floating } from '$lib/index.js';
 	import { Icon, icons } from '$lib/index.js';
-	import type { Snippet } from 'svelte';
+	import { getContext, type Snippet } from 'svelte';
 
 	type T = $$Generic;
 	type TKey = $$Generic;
 	let {
+		name,
 		items = $bindable([]),
 		value = $bindable(),
 		getKey = (item: NonNullable<T>) => item as unknown as TKey,
@@ -16,6 +17,7 @@
 		onchange,
 		item
 	}: {
+		name?: string;
 		items: NonNullable<T>[];
 		value: NonNullable<T> | null;
 		getKey?: (item: NonNullable<T>) => TKey;
@@ -37,6 +39,15 @@
 
 	$effect(internalOnChange);
 
+	const context = getContext<FormContext>(FormContextKey);
+
+	if (context && name) {
+		context.set(name, {
+			value: value ? getKey(value) : undefined,
+			valid: true
+		});
+	}
+
 	function setValue(newValue?: T) {
 		value = newValue ?? null;
 		console.log({ value });
@@ -47,15 +58,25 @@
 		const key = value ? getKey(value) : undefined;
 		const index = items.findIndex((item) => getKey(item) === key);
 		onchange?.(value, index);
+		if (context && name) {
+			context.set(name, {
+				value: key,
+				valid: true
+			});
+		}
 	}
 </script>
 
 <Floating placement="bottom-start" strategy="fixed" class="select-menu">
 	{#snippet trigger({ toggle })}
 		<Button
+			type="button"
 			variant="secondary"
 			label={value ? getDisplayValue(value) : placeholder}
-			onclick={toggle}
+			onclick={(event) => {
+				event.preventDefault();
+				toggle();
+			}}
 			class="select-button"
 		>
 			{#snippet children()}
@@ -65,6 +86,7 @@
 				<Icon name={icons.controls.dropdown} />
 			{/snippet}
 		</Button>
+		<input class="hidden" type="text" {name} value={value && getKey(value)} />
 	{/snippet}
 	{#snippet menu()}
 		{#if allowNone}
@@ -78,6 +100,7 @@
 		{#if item}
 			{#each items as _item, i (i)}
 				<Button
+					type="button"
 					variant="integrated"
 					label={getDisplayValue(_item)}
 					onclick={() => setValue(_item)}
@@ -94,6 +117,7 @@
 		{:else}
 			{#each items as _item, i (i)}
 				<Button
+					type="button"
 					variant="integrated"
 					label={getDisplayValue(_item)}
 					onclick={() => setValue(_item)}

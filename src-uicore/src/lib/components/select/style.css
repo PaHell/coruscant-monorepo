@@ -1,4 +1,7 @@
 .select-menu {
+	& > .button {
+		@apply w-full;
+	}
 	& > menu > .button.button-variant-integrated.button-active {
 		@apply !bg-accent !text-white;
 	}

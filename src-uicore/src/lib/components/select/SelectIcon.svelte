@@ -3,10 +3,12 @@
 	import { Select } from './index.js';
 
 	let {
+		name,
 		value = $bindable(),
 		placeholder,
 		onchange
 	}: {
+		name?: string;
 		value: string | null;
 		placeholder?: string;
 		onchange?: (item: string | null) => unknown;
@@ -22,7 +24,7 @@
 	];
 </script>
 
-<Select {items} bind:value getDisplayValue={(i) => i} {placeholder} {onchange}>
+<Select {name} {items} bind:value getDisplayValue={(i) => i} {placeholder} {onchange}>
 	{#snippet item({ item })}
 		<Icon name={item} />
 	{/snippet}

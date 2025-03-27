@@ -4,12 +4,14 @@
 	type T = $$Generic<string | number>;
 	type EnumEntry = [string, T];
 	let {
+		name,
 		entries = $bindable([]),
 		value = $bindable(),
 		getDisplayValue = (item: EnumEntry) => item as unknown as string,
 		placeholder,
 		onchange
 	}: {
+		name?: string;
 		entries: EnumEntry[];
 		value: T;
 		getDisplayValue: (item: EnumEntry) => string;
@@ -25,6 +27,7 @@
 </script>
 
 <Select
+	{name}
 	{items}
 	value={internalValue}
 	getKey={(i) => i[1]}

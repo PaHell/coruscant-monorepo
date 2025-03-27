@@ -33,6 +33,9 @@
 	}
 
 	& > .icon {
+		&:first-child:last-child {
+			@apply w-full;
+		}
 		&:not(:first-child) {
 			@apply ms-1;
 		}
