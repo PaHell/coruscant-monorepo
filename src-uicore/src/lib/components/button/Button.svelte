@@ -1,11 +1,6 @@
 <script lang="ts">
 	import { Icon, type ButtonProperties } from '$lib/index.js';
-	import type { MergeWithUnion } from '$lib/utils/types.js';
-	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
-
-	type A = ButtonProperties;
-	type B = MergeWithUnion<A, HTMLButtonAttributes>;
-	type C = MergeWithUnion<B, HTMLAnchorAttributes>;
+	import type { DOMAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 
 	let {
 		icon,
@@ -16,11 +11,11 @@
 		active = false,
 		children,
 		...others
-	}: C = $props();
+	}: ButtonProperties & DOMAttributes<HTMLAnchorElement | HTMLButtonElement> = $props();
 </script>
 
 <svelte:element
-	this={others.href ? 'a' : 'button'}
+	this={Object.hasOwn(others, 'href') ? 'a' : 'button'}
 	{...others}
 	class="button button-size-{size} button-variant-{variant} {active
 		? 'button-active'

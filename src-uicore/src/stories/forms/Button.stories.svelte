@@ -40,7 +40,15 @@
 <Story name="Groups" args={{}}>
 	<div class="flex flex-col items-start gap-y-4">
 		<div class="button-group">
-			<Button variant="secondary" icon={icons.controls.add} label="Prev" hideLabel />
+			<Button
+				onclick={() => {
+					console.log('Button clicked');
+				}}
+				variant="secondary"
+				icon={icons.controls.add}
+				label="Prev"
+				hideLabel
+			/>
 			<Button variant="secondary" icon={icons.controls.add} label="Button" hideLabel />
 			<Button variant="secondary" icon={icons.controls.add} label="Next" hideLabel />
 		</div>
