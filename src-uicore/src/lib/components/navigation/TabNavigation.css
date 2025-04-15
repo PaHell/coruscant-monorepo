@@ -1,2 +1,90 @@
 .tab-navigation {
+	@apply relative flex;
+
+	& > .indicator {
+		@apply absolute bottom-0 left-0 z-10 h-1 w-8 transition-all;
+	}
+
+	& > .tab-navigation-content {
+		@apply flex justify-start;
+		& > .button {
+			@apply font-normal;
+		}
+	}
+
+	&.tab-navigation-full > .tab-navigation-content {
+		@apply w-full;
+		& > .button {
+			@apply flex-1 justify-center;
+		}
+	}
+
+	&.tab-navigation-variant-tabs {
+		@apply relative;
+		& > .indicator {
+			@apply bg-accent h-1 w-8;
+		}
+		& > .tab-navigation-content {
+			& > .button {
+				@apply rounded-none;
+			}
+		}
+	}
+
+	&.tab-navigation-variant-pills {
+		& > .indicator {
+			@apply h-0 w-0;
+		}
+		& > .tab-navigation-content {
+			& > .button {
+				&:not(:hover):not(:active):not(:focus-visible):not(.button-active) {
+					@apply text-secondary;
+				}
+				&.button-active {
+					@apply bg-accent-muted text-accent-border ring-0 ring-offset-0;
+					&:hover,
+					&:focus-visible {
+						@apply bg-accent-muted-hover;
+					}
+					&:active {
+						@apply bg-accent-muted-active;
+					}
+				}
+			}
+		}
+	}
+
+	&.tab-navigation-variant-bar {
+		@apply relative;
+		& > .indicator {
+			@apply h-1 w-8;
+			& > div {
+				@apply bg-accent mx-3 h-full rounded-full;
+				width: calc(100% - var(--spacing) * 6);
+			}
+		}
+		& > .tab-navigation-content {
+			@apply dark:bg-interactive flex items-center rounded border border-gray-300 bg-white shadow-xs dark:border-gray-700;
+			& > .button {
+				@apply -my-px !shadow-none ring-0 ring-offset-0;
+				&:first-child {
+					@apply -ms-px;
+				}
+				&:last-child {
+					@apply -me-px;
+				}
+				&:not(:first-child) {
+					@apply -ms-px rounded-s-none;
+				}
+				&:not(:last-child) {
+					@apply rounded-e-none;
+				}
+				&:hover,
+				&:active,
+				&:focus-visible {
+					@apply relative;
+				}
+			}
+		}
+	}
 }

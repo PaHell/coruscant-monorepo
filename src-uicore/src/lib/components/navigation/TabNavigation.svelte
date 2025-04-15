@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { Button, Navigation, type NavigationProperties } from '$lib/index.js';
+	import {
+		Badge,
+		Button,
+		Navigation,
+		type ButtonProperties,
+		type NavigationProperties
+	} from '$lib/index.js';
+	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	type T = $$Generic;
@@ -9,13 +16,28 @@
 		textSelector,
 		match = 0,
 		matchQuery,
+		badgeValueSelector,
 		variant,
+		fullWidth = false,
 		onchange,
+		children: _children,
 		...others
-	}: HTMLAttributes<HTMLDivElement> &
+	}: Omit<HTMLAttributes<HTMLDivElement>, 'children'> &
 		NavigationProperties<T> & {
-			variant: 'option-bar' | 'tabs';
+			badgeValueSelector?: (item: T) => number;
+			variant: 'tabs' | 'pills' | 'bar';
+			fullWidth?: boolean;
 			textSelector: (item: T) => string;
+			children: Snippet<
+				[
+					{
+						item: T;
+						href: string;
+						active: boolean;
+						index: number;
+					}
+				]
+			>;
 		} = $props();
 
 	let active = $state(0);
@@ -24,25 +46,37 @@
 	$effect(() => {
 		const offsetParent = refRoot?.getBoundingClientRect().left ?? 0;
 		const tabRect = refRoot
-			?.querySelector(`.tab:nth-child(${active + 1})`)
+			?.querySelector(`.tab-navigation-content > .button:nth-child(${active + 1})`)
 			?.getBoundingClientRect();
 		offsetLeft = tabRect ? tabRect.left - offsetParent : 0;
 		width = tabRect ? tabRect.width : 0;
 	});
 	let refRoot: HTMLDivElement | undefined = $state(undefined);
+
+	const variantButtonClassMap = {
+		tabs: 'integrated',
+		pills: 'integrated',
+		bar: 'secondary'
+	} satisfies Record<typeof variant, ButtonProperties['variant']>;
 </script>
 
 <div
 	bind:this={refRoot}
 	{...others}
+	class:tab-navigation-full={fullWidth}
 	class="tab-navigation tab-navigation-variant-{variant} {others.class}"
 >
 	<div class="indicator" style="width: {width}px; left: {offsetLeft}px;"><div></div></div>
-	<Navigation {items} {pathSelector} {match} {matchQuery} {onchange} bind:active>
-		{#snippet children({ item, href, active })}
-			<div class="tab">
-				<Button variant="integrated" {href} {active} label={textSelector(item)} />
-			</div>
-		{/snippet}
-	</Navigation>
+	<div class="tab-navigation-content">
+		<Navigation {items} {pathSelector} {match} {matchQuery} {onchange} bind:active>
+			{#snippet children({ item, href, active, index })}
+				<Button variant={variantButtonClassMap[variant]} {href} {active} label={textSelector(item)}>
+					{@render _children({ item, href, active, index })}
+					{#if badgeValueSelector}
+						<Badge label={badgeValueSelector(item).toString()} />
+					{/if}
+				</Button>
+			{/snippet}
+		</Navigation>
+	</div>
 </div>

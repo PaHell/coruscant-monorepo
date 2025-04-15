@@ -12,6 +12,12 @@
 	});
 
 	const sizes: ('xs' | 'sm' | 'md' | 'lg')[] = ['xs', 'sm', 'md', 'lg'];
+	const statuses: ('online' | 'busy' | 'offline' | 'away')[] = [
+		'online',
+		'busy',
+		'offline',
+		'away'
+	];
 	const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 </script>
 
@@ -41,6 +47,23 @@
 				{size}
 			/>
 			<UserAvatar src={undefined} label="User avatar small" {size} />
+			<div></div>
+		{/each}
+	</div>
+	<div class="grid grid-cols-[auto_auto_1fr] gap-6 p-6">
+		{#each sizes as size, index}
+			<UserAvatar
+				src="https://xsgames.co/randomusers/avatar.php?g=female"
+				label="User avatar small"
+				{size}
+				status={statuses[index % statuses.length]}
+			/>
+			<UserAvatar
+				src={undefined}
+				label="User avatar small"
+				{size}
+				status={statuses[index % statuses.length]}
+			/>
 			<div></div>
 		{/each}
 	</div>

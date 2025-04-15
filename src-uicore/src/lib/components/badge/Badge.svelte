@@ -8,7 +8,6 @@
 		variant,
 		pill = false,
 		onRemove,
-		children,
 		...others
 	}: {
 		label: string;
@@ -16,7 +15,6 @@
 		variant?: 'dot' | 'flat' | 'border';
 		pill?: boolean;
 		onRemove?: (event: MouseEvent) => void;
-		children: Snippet<[]>;
 	} = $props();
 </script>
 

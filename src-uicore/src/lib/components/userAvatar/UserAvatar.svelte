@@ -7,6 +7,7 @@
 		size = 'md',
 		src,
 		label,
+		status = undefined,
 		header,
 		subtitle,
 		hideLabel,
@@ -15,6 +16,7 @@
 		size?: 'xs' | 'sm' | 'md' | 'lg';
 		src: string | null | undefined;
 		label: string;
+		status?: 'online' | 'busy' | 'offline' | 'away';
 		header?: Snippet<[]>;
 		subtitle?: Snippet<[]>;
 		hideLabel?: boolean;
@@ -69,7 +71,9 @@
 
 <div
 	{...others}
-	class="user-avatar user-avatar-size-{size} user-avatar-color-{color} {others.class}"
+	class="user-avatar user-avatar-size-{size} user-avatar-color-{color} {status
+		? 'user-avatar-status-' + status
+		: ''} {others.class}"
 >
 	<div class="user-avatar-image">
 		{#if src}

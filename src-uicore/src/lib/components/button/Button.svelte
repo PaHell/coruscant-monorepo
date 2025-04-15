@@ -18,6 +18,7 @@
 <svelte:element
 	this={href ? 'a' : 'button'}
 	{...others}
+	{href}
 	class="button button-size-{size} button-variant-{variant} {active
 		? 'button-active'
 		: ''} {others.class}"

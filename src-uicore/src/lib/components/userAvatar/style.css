@@ -1,12 +1,12 @@
 .user-avatar {
 	@apply flex items-start justify-center;
 	& > .user-avatar-image {
-		@apply dark:bg-interactive ring-primary/10 flex flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring;
+		@apply dark:bg-interactive ring-primary/10 flex flex-shrink-0 items-center justify-center rounded-full bg-white ring;
 		&:has(> img) {
-			@apply !ring-transparent;
+			@apply !bg-background !ring-transparent;
 		}
 		& > img {
-			@apply object-cover;
+			@apply rounded-full object-cover;
 		}
 		& > .text {
 			@apply font-bold text-inherit uppercase;
@@ -21,10 +21,36 @@
 			}
 		}
 	}
+	&[class*='user-avatar-status-'] {
+		& > .user-avatar-image {
+			@apply relative;
+			&:after {
+				content: '';
+				@apply border-background absolute block rounded-full border-2;
+			}
+		}
+	}
+	&.user-avatar-status-online > .user-avatar-image:after {
+		@apply bg-success;
+	}
+	&.user-avatar-status-offline > .user-avatar-image:after {
+		@apply bg-gray-500;
+	}
+	&.user-avatar-status-away > .user-avatar-image:after {
+		@apply bg-warning;
+	}
+	&.user-avatar-status-busy > .user-avatar-image:after {
+		@apply bg-danger;
+	}
 	&.user-avatar-size-xs {
 		@apply space-x-1;
 		& > .user-avatar-image {
 			@apply h-6 w-6;
+			&:after {
+				@apply size-2.5 border;
+				bottom: -0.1rem;
+				right: -0.1rem;
+			}
 		}
 		& > .user-avatar-details > div {
 			@apply h-6 space-x-1;
@@ -40,6 +66,11 @@
 		@apply space-x-1.5;
 		& > .user-avatar-image {
 			@apply h-8 w-8;
+			&:after {
+				@apply size-3.5;
+				bottom: -0.15rem;
+				right: -0.15rem;
+			}
 		}
 		& > .user-avatar-details > div {
 			@apply space-x-1.5;
@@ -52,6 +83,11 @@
 		@apply space-x-2;
 		& > .user-avatar-image {
 			@apply h-12 w-12;
+			&:after {
+				@apply size-5;
+				bottom: -0.2rem;
+				right: -0.2rem;
+			}
 		}
 		& > .user-avatar-details > div {
 			@apply space-x-2;
@@ -64,6 +100,11 @@
 		@apply space-x-3;
 		& > .user-avatar-image {
 			@apply h-16 w-16;
+			&:after {
+				@apply size-6;
+				bottom: -0.2rem;
+				right: -0.2rem;
+			}
 		}
 		& > .user-avatar-details > div {
 			@apply space-x-3;
