@@ -1,4 +1,3 @@
-import type { Snippet } from "svelte";
 export { default as Button } from "./Button.svelte";
 
 export interface ButtonProperties {
@@ -8,6 +7,4 @@ export interface ButtonProperties {
       variant?: 'primary' | 'secondary' | 'soft' | 'integrated' | 'danger' | 'warning' | 'link';
       size?: 'sm' | 'md' | 'lg';
       active?: boolean;
-      class?: string;
-      children?: Snippet<[]>;
 }

@@ -41,7 +41,7 @@
 <Story name="Default" args={{ items, pathSelector, textSelector, children }} />
 
 <Story name="Variants">
-	<div id="#n1">
+	<div id="n1">
 		{#each [true, false] as fullWidth}
 			{#each ['tabs', 'pills', 'bar'] as variant}
 				<TabNavigation
