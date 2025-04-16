@@ -67,12 +67,12 @@
 	}
 </script>
 
-<Floating placement="bottom-start" strategy="fixed" class="select-menu">
+<Floating placement="bottom-start" strategy="fixed" class="select-menu" hidden>
 	{#snippet trigger({ toggle })}
 		<Button
 			type="button"
 			variant="secondary"
-			label={value ? getDisplayValue(value) : placeholder}
+			value={value ? getDisplayValue(value) : placeholder}
 			onclick={(event) => {
 				event.preventDefault();
 				toggle();
@@ -92,7 +92,7 @@
 		{#if allowNone}
 			<Button
 				variant="integrated"
-				label={placeholder}
+				value={placeholder}
 				onclick={() => setValue()}
 				class="w-full !rounded-none"
 			/>
@@ -102,7 +102,7 @@
 				<Button
 					type="button"
 					variant="integrated"
-					label={getDisplayValue(_item)}
+					value={getDisplayValue(_item)}
 					onclick={() => setValue(_item)}
 					class="w-full !rounded-none"
 					active={(value && getKey(value)) == getKey(_item)}
@@ -119,7 +119,7 @@
 				<Button
 					type="button"
 					variant="integrated"
-					label={getDisplayValue(_item)}
+					value={getDisplayValue(_item)}
 					onclick={() => setValue(_item)}
 					class="w-full !rounded-none"
 					active={(value && getKey(value)) == getKey(_item)}

@@ -64,7 +64,7 @@
 		{@render children()}
 	</div>
 	<div class="form-actions">
-		<Button variant="secondary" type="reset" label={cancel} onclick={onCancel} />
-		<Button variant="primary" type="submit" label={submit} />
+		<Button variant="secondary" type="reset" value={cancel} onclick={onCancel} />
+		<Button variant="primary" type="submit" value={submit} />
 	</div>
 </form>

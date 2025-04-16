@@ -2,6 +2,7 @@
 	import {
 		Badge,
 		Button,
+		Link,
 		Navigation,
 		type ButtonProperties,
 		type NavigationProperties
@@ -24,7 +25,7 @@
 		...others
 	}: Omit<HTMLAttributes<HTMLDivElement>, 'children'> &
 		NavigationProperties<T> & {
-			badgeValueSelector?: (item: T) => number;
+			badgeValueSelector?: (item: T) => number | string | null;
 			variant: 'tabs' | 'pills' | 'bar';
 			fullWidth?: boolean;
 			textSelector: (item: T) => string;
@@ -70,12 +71,12 @@
 	<div class="tab-navigation-content">
 		<Navigation {items} {pathSelector} {match} {matchQuery} {onchange} bind:active>
 			{#snippet children({ item, href, active, index })}
-				<Button variant={variantButtonClassMap[variant]} {href} {active} label={textSelector(item)}>
+				<Link variant={variantButtonClassMap[variant]} {href} {active} value={textSelector(item)}>
 					{@render _children({ item, href, active, index })}
 					{#if badgeValueSelector}
 						<Badge label={badgeValueSelector(item).toString()} />
 					{/if}
-				</Button>
+				</Link>
 			{/snippet}
 		</Navigation>
 	</div>

@@ -26,7 +26,7 @@
 	<Floating {placement}>
 		{#snippet trigger({ open })}
 			<Button
-				label={placement.toUpperCase()}
+				value={placement.toUpperCase()}
 				class="mx-auto my-24 w-32"
 				onclick={() => {
 					randomPlacement();

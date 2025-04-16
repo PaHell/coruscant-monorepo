@@ -1,8 +1,17 @@
 <script lang="ts">
 	import { Heading, Text } from '$lib/index.js';
 	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes, HTMLBaseAttributes } from 'svelte/elements';
+	import type { HTMLAttributes } from 'svelte/elements';
 
+	type Properties = {
+		size?: 'xs' | 'sm' | 'md' | 'lg';
+		src: string | null | undefined;
+		label: string;
+		status?: 'online' | 'busy' | 'offline' | 'away';
+		header?: Snippet<[]>;
+		subtitle?: Snippet<[]>;
+		hideLabel?: boolean;
+	} & Omit<HTMLAttributes<HTMLDivElement>, 'children'>;
 	let {
 		size = 'md',
 		src,
@@ -12,15 +21,7 @@
 		subtitle,
 		hideLabel,
 		...others
-	}: HTMLAttributes<HTMLDivElement> & {
-		size?: 'xs' | 'sm' | 'md' | 'lg';
-		src: string | null | undefined;
-		label: string;
-		status?: 'online' | 'busy' | 'offline' | 'away';
-		header?: Snippet<[]>;
-		subtitle?: Snippet<[]>;
-		hideLabel?: boolean;
-	} = $props();
+	}: Properties = $props();
 
 	let headingLevel: undefined | 1 | 2 | 3 | 4 | 5 | 6 = $state();
 	$effect(() => {

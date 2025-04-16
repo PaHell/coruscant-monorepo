@@ -24,18 +24,18 @@
 		<Input placeholder="Add a comment..." bind:value isTextarea />
 		<div class="comment-textarea-controls">
 			<div>
-				<Button variant="integrated" icon={icons.controls.add} label="Upload" hideLabel />
+				<Button variant="integrated" icon={icons.controls.add} value="Upload" hideValue />
 			</div>
 			<div>
 				<div class="button-group">
-					<Button label="Post" />
+					<Button value="Post" />
 					<Floating placement="bottom-end" hidden>
 						{#snippet trigger({ toggle })}
 							<Button
 								variant="primary"
 								icon={icons.controls.dropdown}
-								label="More"
-								hideLabel
+								value="More"
+								hideValue
 								class="-m-px !rounded-s-none"
 								onclick={toggle}
 							/>

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { Icon, type ButtonProperties } from '$lib/index.js';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-	type Properties = ButtonProperties & Omit<HTMLButtonAttributes, 'children'>;
+	type Properties = ButtonProperties & { value: string } & Omit<HTMLAnchorAttributes, 'children'>;
 	let {
 		icon,
+		value,
 		hideValue = false,
 		variant = 'primary',
 		size = 'md',
@@ -14,7 +15,7 @@
 	}: Properties = $props();
 </script>
 
-<button
+<a
 	{...others}
 	class="button button-size-{size} button-variant-{variant} {active
 		? 'button-active'
@@ -27,7 +28,7 @@
 			<Icon name={icon} {size} />
 		{/if}
 		{#if !hideValue}
-			<span>{others.value}</span>
+			<span>{value}</span>
 		{/if}
 	{/if}
-</button>
+</a>

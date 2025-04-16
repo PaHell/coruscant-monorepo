@@ -1,24 +1,23 @@
 <script lang="ts">
-	import { type Snippet } from 'svelte';
-	import { Text, icons, Button, type ButtonProperties, Icon } from '$lib/index.js';
+	import { Text } from '$lib/index.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	let {
-		label,
-		color,
-		variant,
-		pill = false,
-		onRemove,
-		...others
-	}: {
+	type Properties = {
 		label: string;
 		color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
 		variant?: 'dot' | 'flat' | 'border';
 		pill?: boolean;
 		onRemove?: (event: MouseEvent) => void;
-	} = $props();
+	} & Omit<HTMLAttributes<HTMLDivElement>, 'children'>;
+
+	let { label, color, variant, pill = false, onRemove, ...others }: Properties = $props();
 </script>
 
-<div class="badge badge-color-{color} badge-variant-{variant}" class:badge-pill={pill} {...others}>
+<div
+	{...others}
+	class="badge badge-color-{color} badge-variant-{variant} {others.class}"
+	class:badge-pill={pill}
+>
 	<Text>{label}</Text>
 	<button aria-label="Close" onclick={onRemove}>
 		<svg viewBox="0 0 14 14">

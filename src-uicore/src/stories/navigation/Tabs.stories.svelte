@@ -23,10 +23,10 @@
 		args: {}
 	});
 
-	type NavigationItem = { label: string; href: string };
+	type NavigationItem = { label: string; href: string; badge?: string | number | null };
 	const items: NavigationItem[] = [
 		{ label: 'Tab 1', href: '#n1' },
-		{ label: 'Tab 2', href: '#n2' },
+		{ label: 'Tab 2', href: '#n2', badge: 2 },
 		{ label: 'Tab 3', href: '#n3' }
 	];
 
@@ -49,6 +49,7 @@
 					{items}
 					pathSelector={(i) => i.href}
 					textSelector={(i) => i.label}
+					badgeValueSelector={(i) => i.badge}
 					{fullWidth}
 					{children}
 				/>

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { Navigation, Button, Icon, icons } from '$lib/index.js';
+	import { Navigation, Button, Icon, icons, Link, Badge } from '$lib/index.js';
 
 	type SideNavigationItem = {
 		icon: string;
 		label: string;
+		badge?: string | number | null;
 	};
 
 	type WithUrl = {
@@ -39,7 +40,7 @@
 				<Button
 					variant="integrated"
 					active={expandedParent === index}
-					label={item.label}
+					value={item.label}
 					onclick={() => (expandedParent = expandedParent === index ? null : index)}
 				>
 					<Icon name={item.icon} />
@@ -49,12 +50,20 @@
 				{#if expandedParent === index}
 					<Navigation items={item.children} pathSelector={(i) => i.href} {match} {onchange}>
 						{#snippet children({ item, href, active })}
-							<Button variant="integrated" {href} {active} icon={item.icon} label={item.label} />
+							<Link variant="integrated" {href} {active} icon={item.icon} value={item.label}>
+								{#if item.badge}
+									<Badge label={item.badge?.toString()} />
+								{/if}
+							</Link>
 						{/snippet}
 					</Navigation>
 				{/if}
 			{:else}
-				<Button variant="integrated" {href} {active} icon={item.icon} label={item.label} />
+				<Link variant="integrated" {href} {active} icon={item.icon} value={item.label}>
+					{#if item.badge}
+						<Badge label={item.badge?.toString()} />
+					{/if}
+				</Link>
 			{/if}
 		{/snippet}
 	</Navigation>

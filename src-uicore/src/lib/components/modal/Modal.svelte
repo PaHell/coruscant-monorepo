@@ -26,8 +26,8 @@
 				<Button
 					variant="integrated"
 					icon={icons.controls.close}
-					label="Close"
-					hideLabel
+					value="Close"
+					hideValue
 					onclick={() => (visible = false)}
 				/>
 			</header>

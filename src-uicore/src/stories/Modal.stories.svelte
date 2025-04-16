@@ -16,14 +16,14 @@
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story name="Default">
-	<Button label="Open Modal" class="my-48" onclick={() => (visible = true)} />
+	<Button value="Open Modal" class="my-48" onclick={() => (visible = true)} />
 	<Modal title="Title" bind:visible>
 		{#snippet body()}
 			<Text>Body</Text>
 		{/snippet}
 		{#snippet footer()}
 			<Text>Footer</Text>
-			<Button variant="secondary" label="Close" onclick={() => (visible = false)} />
+			<Button variant="secondary" value="Close" onclick={() => (visible = false)} />
 		{/snippet}
 	</Modal>
 </Story>

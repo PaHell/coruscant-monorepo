@@ -7,16 +7,36 @@
 		title: 'Elements/Badge',
 		component: Badge,
 		tags: ['autodocs'],
-		argTypes: {},
+		argTypes: {
+			variant: {
+				control: {
+					type: 'select',
+					options: ['dot', 'flat', 'border']
+				}
+			},
+			color: {
+				control: {
+					type: 'select',
+					options: ['gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink']
+				}
+			},
+			pill: {
+				control: { type: 'boolean' }
+			},
+			label: { control: { type: 'text' } }
+		},
 		args: {}
 	});
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Default"
-	args={{ src: 'https://xsgames.co/randomusers/avatar.php?g=female', label: 'Badge' }}
-/>
+<Story name="Default" args={{ variant: 'dot', label: 'Badge', color: 'red' }}>
+	{#snippet children(args)}
+		<div class="flex">
+			<Badge {...args} />
+		</div>
+	{/snippet}
+</Story>
 <Story name="Variants">
 	<div class="flex flex-wrap space-y-4 space-x-4">
 		{#each ['dot', 'flat', 'border'] as variant}
