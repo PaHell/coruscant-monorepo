@@ -32,6 +32,7 @@ export * from './components/rating/index.js';
 export * from './components/searchForm/index.js';
 export * from './components/select/index.js';
 export * from './components/shareDialog/index.js';
+export * from './components/sideBar/index.js';
 export * from './components/sidePanel/index.js';
 export * from './components/splashScreen/index.js';
 export * from './components/table/index.js';

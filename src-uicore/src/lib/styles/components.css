@@ -23,6 +23,7 @@
 @import '../components/loadingSpinner/style.css';
 @import '../components/meter/style.css';
 @import '../components/modal/style.css';
+@import '../components/navigation/SideNavigation.css';
 @import '../components/navigation/TabNavigation.css';
 @import '../components/notification/style.css';
 @import '../components/pickList/style.css';
@@ -31,6 +32,7 @@
 @import '../components/rating/style.css';
 @import '../components/searchForm/style.css';
 @import '../components/select/style.css';
+@import '../components/sideBar/style.css';
 @import '../components/shareDialog/style.css';
 @import '../components/sidePanel/style.css';
 @import '../components/splashScreen/style.css';

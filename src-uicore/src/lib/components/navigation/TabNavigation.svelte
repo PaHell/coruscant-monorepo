@@ -25,7 +25,7 @@
 		...others
 	}: Omit<HTMLAttributes<HTMLDivElement>, 'children'> &
 		NavigationProperties<T> & {
-			badgeValueSelector?: (item: T) => number | string | null;
+			badgeValueSelector?: (item: T) => number | string | null | undefined;
 			variant: 'tabs' | 'pills' | 'bar';
 			fullWidth?: boolean;
 			textSelector: (item: T) => string;
@@ -71,10 +71,30 @@
 	<div class="tab-navigation-content">
 		<Navigation {items} {pathSelector} {match} {matchQuery} {onchange} bind:active>
 			{#snippet children({ item, href, active, index })}
-				<Link variant={variantButtonClassMap[variant]} {href} {active} value={textSelector(item)}>
+				<Link
+					variant={variantButtonClassMap[variant]}
+					{href}
+					{active}
+					value={textSelector(item)}
+					size="lg"
+				>
 					{@render _children({ item, href, active, index })}
 					{#if badgeValueSelector}
-						<Badge label={badgeValueSelector(item).toString()} />
+						{#if typeof badgeValueSelector(item) === 'number'}
+							<Badge
+								pill
+								color="blue"
+								variant={variant === 'bar' ? 'border' : 'flat'}
+								label={badgeValueSelector(item).toString()}
+							/>
+						{:else if typeof badgeValueSelector(item) === 'string'}
+							<Badge
+								pill
+								color="blue"
+								variant={variant === 'bar' ? 'border' : 'flat'}
+								label={badgeValueSelector(item)}
+							/>
+						{/if}
 					{/if}
 				</Link>
 			{/snippet}

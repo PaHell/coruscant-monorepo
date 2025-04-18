@@ -2,6 +2,23 @@ export { default as Navigation } from "./Navigation.svelte";
 export { default as TabNavigation } from "./TabNavigation.svelte";
 export { default as SideNavigation } from "./SideNavigation.svelte";
 
+interface WithUrl {
+      href: string;
+      match?: number;
+};
+
+interface WithChildren {
+      children: (SideNavigationItem & WithUrl)[];
+};
+
+export type SideNavigationItemBase = {
+      icon: string;
+      label: string;
+      badge?: string | number | null | undefined;
+};
+
+export type SideNavigationItem = (WithUrl | WithChildren) & SideNavigationItemBase;
+
 export type NavigationProperties<T> = {
       items: T[];
       pathSelector: (item: T) => string;

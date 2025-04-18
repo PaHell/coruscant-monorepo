@@ -1,0 +1,97 @@
+.sidebar {
+	@apply flex h-full w-96 flex-col space-y-2 overflow-auto;
+	& > header {
+		@apply me-2 flex flex-shrink-0 items-center;
+		& > .button {
+			&:first-child {
+				@apply h-16 flex-1 rounded-none bg-transparent p-3;
+				& > img {
+					@apply me-3 h-full w-auto;
+				}
+				& > span {
+					@apply text-2xl font-semibold;
+				}
+			}
+		}
+		& > .text {
+			@apply flex-1 ps-4 pe-1;
+		}
+	}
+	& > main {
+		@apply flex-1;
+		& > .side-navigation .button {
+			@apply rounded-none;
+			&:not(:hover):not(:active):not(:focus-visible):not(.button-active) {
+				@apply bg-transparent;
+			}
+		}
+	}
+	& > footer {
+		@apply flex items-center justify-end space-x-2 p-4;
+	}
+
+	&.sidebar-collapsed {
+		@apply w-12;
+		& > header {
+			@apply me-0 flex-col;
+			& > .button {
+				@apply w-full rounded-none;
+				&:first-child {
+					@apply flex-initial;
+					& > img {
+						@apply m-0;
+					}
+					& > span {
+						@apply hidden;
+					}
+				}
+			}
+		}
+		& > footer {
+			@apply flex-col items-center justify-center space-y-2 space-x-0 p-0;
+			& > .button {
+				@apply w-full rounded-none;
+			}
+		}
+		& .side-navigation {
+			& .button {
+				@apply relative justify-center;
+				& > .icon {
+					@apply me-0;
+				}
+				& > span,
+				& > .icon:last-child {
+					@apply hidden;
+				}
+				& > .badge {
+					@apply absolute top-0 right-0 z-10 flex px-2;
+				}
+			}
+		}
+	}
+
+	&.dark {
+		@apply text-primary;
+	}
+
+	&.sidebar-variant-dark {
+		@apply bg-background;
+	}
+	&.sidebar-variant-accent {
+		@apply bg-accent text-primary;
+		& .badge {
+			@apply bg-primary text-accent-foreground;
+		}
+		& .button {
+			@apply text-primary bg-transparent;
+			&:hover,
+			&:focus-visible {
+				@apply bg-accent-foreground/50;
+			}
+			&:active,
+			&.button-active {
+				@apply bg-accent-foreground;
+			}
+		}
+	}
+}

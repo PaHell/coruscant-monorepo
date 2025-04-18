@@ -6,22 +6,26 @@
 		@apply border-1 outline-0;
 	}
 
+	&:has(.icon:first-child:last-child) {
+		@apply !px-0;
+	}
+
 	&.button-size-sm {
-		@apply h-8 px-1.5 text-sm font-semibold;
+		@apply h-8 min-w-8 px-1.5 text-sm font-semibold;
 		&.button-variant-link:after {
 			@apply bottom-0.5 mx-2;
 			width: calc(100% - 0.5rem - 0.5rem);
 		}
 	}
 	&.button-size-md {
-		@apply h-9 px-2 text-sm font-semibold;
+		@apply h-9 min-w-9 px-2 text-sm font-semibold;
 		&.button-variant-link:after {
 			@apply bottom-1 mx-2.5;
 			width: calc(100% - 0.625rem - 0.625rem);
 		}
 	}
 	&.button-size-lg {
-		@apply h-11 px-2.5 text-base font-semibold;
+		@apply h-11 min-w-11 px-2.5 text-base font-semibold;
 		&.button-variant-link:after {
 			@apply bottom-1.5 mx-3;
 			width: calc(100% - 0.75rem - 0.75rem);

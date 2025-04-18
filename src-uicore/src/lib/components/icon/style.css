@@ -1,6 +1,6 @@
 .icon {
 	@apply text-center text-[1.125rem] !leading-none;
-	font-weight: normal;
+	font-weight: normal !important;
 
 	&.icon-size-sm {
 		@apply text-[1.125rem];

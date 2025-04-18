@@ -85,8 +85,8 @@
 			<Text small>{initials}</Text>
 		{/if}
 	</div>
-	<div class="user-avatar-details">
-		{#if !hideLabel}
+	{#if !hideLabel}
+		<div class="user-avatar-details">
 			<div>
 				{#if headingLevel}
 					<Heading level={headingLevel}>{label}</Heading>
@@ -100,6 +100,6 @@
 					{@render subtitle()}
 				</div>
 			{/if}
-		{/if}
-	</div>
+		</div>
+	{/if}
 </div>
