@@ -4,7 +4,21 @@
 	import { UserAvatar } from '$lib/index.js';
 	import { Navigation } from '$lib/index.js';
 
+	type Properties = Omit<HTMLAttributes<HTMLElement>, 'children'> & {
+		variant: 'theme' | 'accent' | 'dark';
+		overlap: boolean;
+		appName: string;
+		logoSrc: string;
+		hrefHome: string;
+		userName: string;
+		userAvatar: string | null | undefined;
+		navigation: { label: string; href: string }[];
+		links: { label: string; href: string }[];
+	};
+
 	let {
+		variant,
+		overlap,
 		appName,
 		logoSrc,
 		hrefHome,
@@ -13,18 +27,14 @@
 		navigation,
 		links,
 		...others
-	}: HTMLAttributes<HTMLElement> & {
-		appName: string;
-		logoSrc: string;
-		hrefHome: string;
-		userName: string;
-		userAvatar: string | null | undefined;
-		navigation: { label: string; href: string }[];
-		links: { label: string; href: string }[];
-	} = $props();
+	}: Properties = $props();
 </script>
 
-<header {...others} class="header {others.class}">
+<header
+	{...others}
+	class="header header-variant-{variant} {others.class}"
+	class:header-overlap={overlap}
+>
 	<Link variant="integrated" href="/" value="Goto home" class="branding">
 		<img src={logoSrc} alt={appName} />
 		<Heading level={5}>{appName}</Heading>

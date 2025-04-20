@@ -30,6 +30,15 @@
 		component: Header,
 		tags: ['autodocs'],
 		argTypes: {
+			variant: {
+				control: { type: 'select' },
+				options: ['theme', 'accent', 'dark'],
+				description: 'Variant of the header'
+			},
+			overlap: {
+				control: { type: 'boolean' },
+				description: 'Whether the header overlaps with the content'
+			},
 			logoSrc: {
 				control: { type: 'text' },
 				description: 'Source for the logo of the application'
@@ -44,6 +53,8 @@
 			}
 		},
 		args: {
+			variant: 'theme',
+			overlap: false,
 			logoSrc:
 				'https://raw.githubusercontent.com/sveltejs/branding/refs/heads/master/svelte-logo-cutout.svg',
 			appName: 'Svelte',
