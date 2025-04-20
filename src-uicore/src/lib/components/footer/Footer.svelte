@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Text } from '$lib/index.js';
+	import { Link, Text } from '$lib/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { Button } from '$lib/index.js';
 
@@ -16,6 +16,6 @@
 <footer {...others} class="footer {others.class}">
 	<Text>{copyright}</Text>
 	{#each links as { label, href }}
-		<Button {href} {label} />
+		<Link variant="link" {href} value={label} />
 	{/each}
 </footer>

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { Heading } from '$lib/index.js';
+	import { Heading, Link, TabNavigation } from '$lib/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { Button } from '$lib/index.js';
 	import { UserAvatar } from '$lib/index.js';
 	import { Navigation } from '$lib/index.js';
 
 	let {
 		appName,
 		logoSrc,
+		hrefHome,
 		userName,
 		userAvatar,
 		navigation,
@@ -16,6 +16,7 @@
 	}: HTMLAttributes<HTMLElement> & {
 		appName: string;
 		logoSrc: string;
+		hrefHome: string;
 		userName: string;
 		userAvatar: string | null | undefined;
 		navigation: { label: string; href: string }[];
@@ -24,23 +25,28 @@
 </script>
 
 <header {...others} class="header {others.class}">
-	<Button href="/" label="Goto home" class="branding">
+	<Link variant="integrated" href="/" value="Goto home" class="branding">
 		<img src={logoSrc} alt={appName} />
 		<Heading level={5}>{appName}</Heading>
-	</Button>
+	</Link>
 	<nav>
-		<Navigation items={navigation} pathSelector={(i) => i.href}>
-			{#snippet children({ href, item })}
-				<Button variant="integrated" {href} label={item.label} />
+		<TabNavigation
+			variant="pills"
+			items={navigation}
+			pathSelector={(i) => i.href}
+			textSelector={(i) => i.label}
+		>
+			{#snippet children({ item })}
+				{item.label}
 			{/snippet}
-		</Navigation>
+		</TabNavigation>
 	</nav>
 	<div class="links">
 		<Navigation items={links} pathSelector={(i) => i.href}>
 			{#snippet children({ href, item })}
-				<Button variant="link" {href} label={item.label} />
+				<Link variant="link" {href} value={item.label} />
 			{/snippet}
 		</Navigation>
-		<UserAvatar label={userName} src={userAvatar} />
+		<UserAvatar size="sm" label={userName} src={userAvatar} />
 	</div>
 </header>

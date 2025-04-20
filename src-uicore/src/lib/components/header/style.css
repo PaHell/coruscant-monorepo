@@ -1,7 +1,14 @@
 .header {
 	@apply flex items-center space-x-2;
 	& > .branding {
-		@apply me-auto;
+		@apply me-auto flex-shrink-0;
+		& > img {
+			@apply me-1.5 h-full w-auto flex-shrink-0;
+		}
+		& > .text {
+			text-overflow: none;
+			overflow: visible;
+		}
 	}
 	& > nav {
 		@apply flex flex-1 items-center space-x-2;
